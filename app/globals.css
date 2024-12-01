@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Chivo:ital,wght@0,100..900;1,100..900&family=Fenix&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,4 +20,68 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .strong > strong {
+    @apply font-medium text-second-yellow underline;
+  }
+
+  ::-moz-selection {
+    @apply bg-second-yellow text-primary-black;
+  }
+
+  ::selection {
+    @apply bg-second-yellow text-primary-black;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    @apply hidden;
+  }
+}
+
+@layer components {
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* grid-template-rows: repeat(auto-fill, minmax(200px, 400px)); */
+    grid-auto-rows: 15.625rem;
+    gap: 20px;
+    grid-auto-flow: dense;
+    margin-top: 20px;
+  }
+
+  .gallery figure {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  @media (width > 600px) {
+    .gallery figure:nth-child(2) {
+      grid-area: span 2 / span 2;
+    }
+
+    .gallery figure:nth-child(4) {
+      grid-area: span 2 / span 2;
+    }
+
+    .gallery figure:nth-child(6) {
+      grid-area: span 2 / span 3;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  }
+
+  @media (max-width: 600px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+  }
 }
