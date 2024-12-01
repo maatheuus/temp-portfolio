@@ -21,6 +21,7 @@ export default {
           black: '#110B11',
           white: '#EEF4ED',
           grey: '#737373',
+          lightgrey: '#A3A3A3',
         },
         second: {
           yellow: '#FFBA08',

@@ -6,12 +6,8 @@ export default function Page() {
   useScrollPage();
   return (
     <section className="mx-auto max-w-[43.563rem] space-y-12">
-      <Heading
-        {...{
-          as: 'h1',
-        }}
-      >
-        Hey there, I&apos;m Matheus, a Frontend Engineer based in Brazil, always
+      <Heading as="h1">
+        Hello, I&apos;m Matheus, a Frontend Engineer based in Brazil, always
         seeking new challenges.
       </Heading>{' '}
     </section>
