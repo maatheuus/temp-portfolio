@@ -16,8 +16,8 @@ type LinkProps = {
 const linksNav: LinkProps[] = [
   { href: '/', label: 'Home', icon: <House /> },
   { href: '/about', label: 'About', icon: <User /> },
-  { href: '/work', label: 'Work', icon: <BriefcaseBusiness /> },
-  { href: '/stack', label: 'Stack', icon: <Layers /> },
+  { href: '/works', label: 'Works', icon: <BriefcaseBusiness /> },
+  { href: '/stacks', label: 'Stacks', icon: <Layers /> },
   { href: '/contact', label: 'Contact', icon: <Contact /> },
 ];
 
