@@ -27,6 +27,9 @@ export default {
           yellow: '#FFBA08',
         },
       },
+      screens: {
+        xs: '27.5rem', // 440px
+      },
     },
   },
   plugins: [],

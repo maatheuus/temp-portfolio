@@ -1,6 +1,6 @@
 import Heading from '@/src/components/Layout/Heading';
 import Text from '@/src/components/Layout/Text';
-import Gallery from '@/src/components/ui/Gallery';
+import Gallery from '@/src/components/UI/Gallery';
 import type { Metadata } from 'next';
 import { basketImg, photos, poaImg } from '../../src/util/imageData';
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 export default function page() {
   return (
-    <section className="mx-auto w-fit">
+    <section className="mx-auto w-fit p-10">
       <div className="space-y-12">
         <div className="max-w-[36rem] space-y-2">
           <Heading as="h1">About</Heading>
@@ -20,7 +20,7 @@ export default function page() {
             seeking new challenges.
           </Text>
         </div>
-        <div className="[&>p]:!text-primary-lightgrey [&>p]:hyphens-manual">
+        <div className="[&>p]:hyphens-manual [&>p]:!text-primary-lightgrey">
           <Text className="strong mt-4 hyphens-auto text-lg">
             I am a <strong>Full-stack</strong> developer and I am immersed in
             the world of web development. With intermediate skills in
@@ -44,12 +44,12 @@ export default function page() {
               the study routine. During this free time, I:
             </Text>
             <div className="h-full">
-              <Gallery title="I play so much basketball" images={basketImg} />
+              <Gallery title="Play so much basketball" images={basketImg} />
               <Gallery
-                title="I make a trip (and I loved...2025 I coming)"
+                title="Make a trip (and I loved...2025 I coming)"
                 images={poaImg}
               />
-              <Gallery title="I also take a lot of images" images={photos} />
+              <Gallery title="I also take a lot of pictures" images={photos} />
             </div>
           </div>
         </div>

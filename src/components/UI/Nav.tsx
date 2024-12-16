@@ -1,5 +1,7 @@
 'use client';
+
 import { motion, useAnimation } from 'framer-motion';
+import { BriefcaseBusiness, Contact, House, Layers, User } from 'lucide-react';
 import { Link } from 'next-view-transitions';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
@@ -8,14 +10,15 @@ import { twMerge } from 'tailwind-merge';
 type LinkProps = {
   href: string;
   label: string;
+  icon: React.ReactNode;
 };
 
 const linksNav: LinkProps[] = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/work', label: 'Work' },
-  { href: '/stack', label: 'Stack' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', label: 'Home', icon: <House /> },
+  { href: '/about', label: 'About', icon: <User /> },
+  { href: '/works', label: 'Works', icon: <BriefcaseBusiness /> },
+  { href: '/stacks', label: 'Stacks', icon: <Layers /> },
+  { href: '/contact', label: 'Contact', icon: <Contact /> },
 ];
 
 export default function Nav() {
@@ -59,7 +62,20 @@ export default function Nav() {
               ></motion.span>
               <motion.span
                 className={twMerge(
-                  'relative',
+                  'relative hidden transition-colors duration-200 sm:block',
+                  pathname === link.href
+                    ? 'text-second-yellow'
+                    : 'text-primary-white hover:text-second-yellow/60',
+                )}
+                animate={controlsText}
+                initial={{ opacity: 0, y: '10px' }}
+                transition={{ duration }}
+              >
+                {link.label}
+              </motion.span>
+              <motion.span
+                className={twMerge(
+                  'relative block sm:hidden',
                   pathname === link.href
                     ? 'text-second-yellow'
                     : 'text-primary-white',
@@ -68,7 +84,7 @@ export default function Nav() {
                 initial={{ opacity: 0, y: '10px' }}
                 transition={{ duration }}
               >
-                {link.label}
+                {link.icon}
               </motion.span>
             </Link>
           </li>
