@@ -11,7 +11,7 @@ interface ImagesArrayProps {
 }
 
 type GalleryProps = {
-  title: string;
+  title?: string;
   images: ImagesArrayProps[];
   numberSlices?: number;
   seeMore?: boolean;
@@ -35,7 +35,7 @@ export default function Gallery({
         {seeMore && (
           <Link
             href="/gallery"
-            className="text-primary-lightgrey text-sm transition-colors duration-200 hover:text-second-yellow"
+            className="xs:inline hidden text-sm text-primary-lightgrey transition-colors duration-200 hover:text-second-yellow"
           >
             (...see more)
           </Link>
@@ -55,6 +55,7 @@ export default function Gallery({
             <Image
               src={image.src}
               alt={image.alt}
+              title={image.alt}
               className="h-fit rounded-xl object-cover transition-all duration-300 hover:scale-105"
               loading="lazy"
               placeholder="blur"
