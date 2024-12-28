@@ -1,0 +1,20 @@
+.tooltip-container {
+  @apply flex flex-wrap gap-x-2;
+
+  & > p:not(:first-of-type) {
+    @apply gap-1;
+  }
+
+  & > p:not(:first-of-type) > span:first-of-type {
+    @apply font-medium underline;
+  }
+  & .tooltip-container--card {
+    @apply bg-secondary-yellow absolute top-full mt-2 w-[18vw] rounded p-2 text-sm text-primary-black;
+  }
+}
+
+@media (min-width: 640px) {
+  .tooltip-container {
+    @apply flex-row;
+  }
+}

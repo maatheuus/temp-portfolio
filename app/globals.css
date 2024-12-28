@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Alice&family=Chivo:ital,wght@0,100..900;1,100..900&family=Fenix&display=swap');
+@import './utilities.css';
 
 @tailwind base;
 @tailwind components;
@@ -24,15 +25,15 @@ body {
 
 @layer utilities {
   .strong > strong {
-    @apply font-medium text-second-yellow underline;
+    @apply text-secondary-yellow font-medium underline;
   }
 
   ::-moz-selection {
-    @apply bg-second-yellow text-primary-black;
+    @apply bg-secondary-yellow text-primary-black;
   }
 
   ::selection {
-    @apply bg-second-yellow text-primary-black;
+    @apply bg-secondary-yellow text-primary-black;
   }
 
   /* width */

@@ -35,7 +35,7 @@ export default function Gallery({
         {seeMore && (
           <Link
             href="/gallery"
-            className="xs:inline hidden text-sm text-primary-lightgrey transition-colors duration-200 hover:text-second-yellow"
+            className="hover:text-secondary-yellow hidden text-sm text-primary-lightgrey transition-colors duration-200 xs:inline"
           >
             (...see more)
           </Link>

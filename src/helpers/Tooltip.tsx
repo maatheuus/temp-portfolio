@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { twMerge } from 'tailwind-merge';
 import Text from '../components/Layout/Text';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 
@@ -18,20 +17,22 @@ function Hover({ textDisplay, textTooltip }: TooltipProps) {
   return (
     <motion.span
       ref={ref}
-      className={twMerge('relative inline-flex flex-col')}
+      className="relative inline-flex flex-col"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onClick={() => setIsHovered(!isHovered)}
     >
-      <span className="flex gap-1 font-bold underline">{textDisplay}</span>
-      <span
-        className={twMerge(
-          'absolute -left-1/2 w-52 rounded-lg bg-primary-white px-4 py-2 font-fenix text-base text-primary-black transition-all duration-200 sm:w-max',
-          isHovered ? 'block -translate-y-16 sm:-translate-y-10' : 'hidden',
-        )}
-      >
-        {textTooltip}
-      </span>
+      <span className="flex">{textDisplay}</span>
+      {isHovered && (
+        <motion.span
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="tooltip-container--card absolute top-full mt-2 rounded bg-gray-800 p-2 text-sm text-white"
+        >
+          {textTooltip}
+        </motion.span>
+      )}
     </motion.span>
   );
 }
@@ -42,27 +43,27 @@ function Item({ textDisplay, textTooltip }: TooltipProps) {
 
 function Tooltip() {
   return (
-    <div className="flex gap-1">
+    <div className="tooltip-container">
       <Text>But besides that:</Text>
-      <Text>
+      <Text className="flex">
         I&apos;m a{' '}
         <Item
           textDisplay="photographer."
-          textTooltip="I'm actually a good nature photographer 😅"
+          textTooltip="I'm actually a good nature photographer"
         />
       </Text>
-      <Text>
+      <Text className="flex">
         I&apos;m also a good{' '}
         <Item
           textDisplay="musician."
-          textTooltip="I mean... I appreciate good music, but nobody needs to know 🤣"
+          textTooltip="I mean... I appreciate good music, but nobody needs to know"
         />
       </Text>
-      <Text>
+      <Text className="flex">
         I&apos;m a good{' '}
         <Item
           textDisplay="cook"
-          textTooltip="I mean... I think you got the point 😅"
+          textTooltip="I mean... I think you got the point"
         />{' '}
         too.
       </Text>

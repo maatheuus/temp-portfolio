@@ -46,7 +46,7 @@ export default function Nav() {
             className={twMerge(
               'relative px-2 py-3',
               pathname === link.href
-                ? 'text-second-yellow'
+                ? 'text-secondary-yellow'
                 : 'text-primary-white',
             )}
           >
@@ -64,8 +64,8 @@ export default function Nav() {
                 className={twMerge(
                   'relative hidden transition-colors duration-200 sm:block',
                   pathname === link.href
-                    ? 'text-second-yellow'
-                    : 'text-primary-white hover:text-second-yellow/60',
+                    ? 'text-secondary-yellow'
+                    : 'hover:text-secondary-yellow/60 text-primary-white',
                 )}
                 animate={controlsText}
                 initial={{ opacity: 0, y: '10px' }}
@@ -77,7 +77,7 @@ export default function Nav() {
                 className={twMerge(
                   'relative block sm:hidden',
                   pathname === link.href
-                    ? 'text-second-yellow'
+                    ? 'text-secondary-yellow'
                     : 'text-primary-white',
                 )}
                 animate={controlsText}

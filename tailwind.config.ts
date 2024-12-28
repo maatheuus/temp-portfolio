@@ -23,7 +23,7 @@ export default {
           grey: '#737373',
           lightgrey: '#A3A3A3',
         },
-        second: {
+        secondary: {
           yellow: '#FFBA08',
         },
       },
