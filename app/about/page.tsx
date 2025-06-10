@@ -1,6 +1,6 @@
 import Heading from '@/src/components/Layout/Heading';
 import Text from '@/src/components/Layout/Text';
-import Gallery from '@/src/components/UI/Gallery';
+import GalleryLightbox from '@/src/components/UI/GalleryLightbox';
 import type { Metadata } from 'next';
 import { basketImg, photos, poaImg } from '../../src/util/imageData';
 
@@ -44,12 +44,18 @@ export default function page() {
               the study routine. During this free time, I:
             </Text>
             <div className="h-full">
-              <Gallery title="Play so much basketball" images={basketImg} />
-              <Gallery
+              <GalleryLightbox
+                title="Play so much basketball"
+                images={basketImg}
+              />
+              <GalleryLightbox
                 title="Make a trip (and I loved...2025 I coming)"
                 images={poaImg}
               />
-              <Gallery title="I also take a lot of pictures" images={photos} />
+              <GalleryLightbox
+                title="I also take a lot of pictures"
+                images={photos}
+              />
             </div>
           </div>
         </div>

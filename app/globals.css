@@ -86,3 +86,12 @@ body {
     }
   }
 }
+
+.lg-outer .lg-thumb-item.active,
+.lg-outer .lg-thumb-item:hover {
+  @apply !border-secondary-yellow;
+}
+
+.react-photo-album--image {
+  @apply object-cover rounded-md;
+}

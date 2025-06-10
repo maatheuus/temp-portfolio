@@ -1,10 +1,16 @@
-import Gallery from '@/src/components/UI/Gallery';
+import Gallery, { ImageProps } from '@/src/components/UI/Gallery';
 import { basketImg, photos, poaImg } from '../../src/util/imageData';
-export default function page() {
-  const allImages = [...basketImg, ...poaImg, ...photos];
+
+const allImages: ImageProps[] = [...basketImg, ...poaImg, ...photos];
+
+const categories = ['Basketball', 'Porto Alegre', 'Nature'];
+
+export default function GalleryPage() {
+  
   return (
-    <section className="h-full">
-      <Gallery images={allImages} numberSlices={-1} seeMore={false} />
-    </section>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="mb-8 text-3xl font-bold">Photo Gallery</h1>
+      <Gallery images={allImages} categories={categories} />
+    </div>
   );
 }

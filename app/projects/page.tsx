@@ -1,6 +1,6 @@
 export default function page () {
 
 return (
-<div>contact</div>
+<div>projects</div>
 )
 }

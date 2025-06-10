@@ -1,69 +1,107 @@
-import Image, { type StaticImageData } from 'next/image';
+'use client';
 
-import { Link } from 'next-view-transitions';
-import { twMerge } from 'tailwind-merge';
-import Text from '../Layout/Text';
+import { motion } from 'framer-motion';
+import type { StaticImageData } from 'next/image';
+import { useState } from 'react';
+import { RowsPhotoAlbum } from 'react-photo-album';
+import 'react-photo-album/rows.css';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 
-interface ImagesArrayProps {
-  id: number;
+export interface ImageProps {
   src: StaticImageData;
-  alt: string;
+  thumbnail: StaticImageData;
+  thumbnailWidth?: number;
+  thumbnailHeight?: number;
+  caption?: string;
+  category: string;
+  width: number;
+  height: number;
 }
 
-type GalleryProps = {
-  title?: string;
-  images: ImagesArrayProps[];
-  numberSlices?: number;
-  seeMore?: boolean;
-};
-export default function Gallery({
-  title,
-  images,
-  seeMore = true,
-  numberSlices = 4,
-}: GalleryProps) {
-  const isLast =
-    images.length > 3 &&
-    images.slice(0, 4).map((_, index) => index === images.length - 1);
+interface GalleryProps {
+  images: ImageProps[];
+  categories?: string[];
+}
+
+export default function Gallery({ images, categories }: GalleryProps) {
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const filteredImages =
+    selectedCategory === 'all'
+      ? images
+      : images.filter((img) => img.category === selectedCategory);
+
+  const slides = filteredImages.map((img) => ({
+    src: img.src.src,
+    alt: img.caption || '',
+  }));
+
+  const photos = filteredImages.map((img) => ({
+    src: img.thumbnail.src,
+    alt: img.caption || '',
+    width: img.width,
+    height: img.height,
+  }));
 
   return (
-    <section className="h-full">
-      <div className="mb-4 mt-7 flex items-end gap-x-4">
-        <Text as="h2" className="font-chivo text-2xl">
-          {title}
-        </Text>
-        {seeMore && (
-          <Link
-            href="/gallery"
-            className="hover:text-secondary-yellow hidden text-sm text-primary-lightgrey transition-colors duration-200 xs:inline"
-          >
-            (...see more)
-          </Link>
-        )}
+    <div className="w-full">
+      <div className="mb-8 flex flex-wrap gap-2">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setSelectedCategory('all')}
+          className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+            selectedCategory === 'all'
+              ? 'bg-secondary-yellow text-primary-black'
+              : 'bg-gray-100 text-primary-black transition-colors hover:bg-gray-200'
+          }`}
+        >
+          All
+        </motion.button>
+        {categories &&
+          categories?.map((category) => (
+            <motion.button
+              key={category}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setSelectedCategory(category)}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                selectedCategory === category
+                  ? 'bg-secondary-yellow text-primary-black'
+                  : 'bg-gray-100 text-primary-black transition-colors hover:bg-gray-200'
+              }`}
+            >
+              {category}
+            </motion.button>
+          ))}
       </div>
-      <div
-        className={twMerge(
-          'gallery',
-          isLast ? '[&_figure:last-child]:col-span-full' : '',
-        )}
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
-        {images.slice(0, numberSlices).map((image, index) => (
-          <figure
-            key={index}
-            className="relative h-auto w-full overflow-hidden"
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              title={image.alt}
-              className="h-fit rounded-xl object-cover transition-all duration-300 hover:scale-105"
-              loading="lazy"
-              placeholder="blur"
-              fill
-            />
-          </figure>
-        ))}
-      </div>
-    </section>
+        <RowsPhotoAlbum
+          photos={photos}
+          targetRowHeight={500}
+          spacing={8}
+          padding={0}
+          onClick={({ index: current }) => {
+            setSelectedImageIndex(current);
+            setLightboxOpen(true);
+          }}
+        />
+      </motion.div>
+
+      <Lightbox
+        open={lightboxOpen}
+        close={() => setLightboxOpen(false)}
+        slides={slides}
+        index={selectedImageIndex}
+      />
+    </div>
   );
 }

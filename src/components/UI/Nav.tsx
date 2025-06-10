@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useAnimation } from 'framer-motion';
-import { BriefcaseBusiness, Contact, House, Layers, User } from 'lucide-react';
+import { BriefcaseBusiness, Computer, Contact, House, User, } from 'lucide-react';
 import { Link } from 'next-view-transitions';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
@@ -17,7 +17,7 @@ const linksNav: LinkProps[] = [
   { href: '/', label: 'Home', icon: <House /> },
   { href: '/about', label: 'About', icon: <User /> },
   { href: '/works', label: 'Works', icon: <BriefcaseBusiness /> },
-  { href: '/stacks', label: 'Stacks', icon: <Layers /> },
+  { href: '/projects', label: 'Projects', icon: <Computer /> },
   { href: '/contact', label: 'Contact', icon: <Contact /> },
 ];
 

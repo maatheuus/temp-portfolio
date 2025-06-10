@@ -9,7 +9,7 @@
     @apply font-medium underline;
   }
   & .tooltip-container--card {
-    @apply bg-secondary-yellow absolute top-full mt-2 w-[18vw] rounded p-2 text-sm text-primary-black;
+    @apply bg-secondary-yellow absolute top-full mt-2 w-[50vw] md:w-[18vw] rounded p-2 text-sm text-primary-black;
   }
 }
 

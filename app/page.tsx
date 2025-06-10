@@ -2,6 +2,8 @@
 import Heading from '@/src/components/Layout/Heading';
 import Text from '@/src/components/Layout/Text';
 import ContactLinks from '@/src/components/UI/ContactLinks';
+import FeaturedProjects from '@/src/components/UI/FeaturedProjects';
+import Skills from '@/src/components/UI/Skills';
 import Tooltip from '@/src/helpers/Tooltip';
 import useScrollPage from '@/src/util/scrollPage';
 
@@ -21,6 +23,12 @@ export default function Page() {
           (with next.js mostly).
         </Text>
         <Tooltip />
+      </div>
+      <div>
+        <Skills />
+      </div>
+      <div>
+        <FeaturedProjects />
       </div>
     </section>
   );
