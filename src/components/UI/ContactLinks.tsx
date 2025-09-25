@@ -1,12 +1,16 @@
-import { ArrowUpFromDot, AtSign, Github, Linkedin } from 'lucide-react';
+import {
+  AtIcon,
+  GithubLogoIcon,
+  LinkedinLogoIcon,
+  type Icon,
+} from '@phosphor-icons/react';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 
 type LinkData = {
   href: string;
-  icon: React.ReactNode;
+  icon: Icon;
   text: string;
-  otherIcon?: React.ReactNode;
   className?: string;
   classNameIconText?: string;
   classText?: string;
@@ -15,14 +19,13 @@ type LinkData = {
 const links: LinkData[] = [
   {
     href: 'https://www.linkedin.com/in/matheusmaat/',
-    icon: <Linkedin />,
+    icon: LinkedinLogoIcon,
     text: 'Connect with me',
-    otherIcon: <ArrowUpFromDot />,
     className: 'flex w-full items-center justify-between',
   },
   {
     href: 'mailto:matts14smkd@gmail.com',
-    icon: <AtSign />,
+    icon: AtIcon,
     text: 'Send me an email',
     className: 'w-full xs:w-fit',
     classText: 'block text-lg xs:hidden',
@@ -30,7 +33,7 @@ const links: LinkData[] = [
   },
   {
     href: 'https://github.com/maatheuus',
-    icon: <Github />,
+    icon: GithubLogoIcon,
     text: 'Check out my GitHub',
     classText: 'block text-lg xs:hidden',
     className: 'w-full xs:w-fit',
@@ -38,9 +41,20 @@ const links: LinkData[] = [
   },
 ];
 
-export default function ContactLinks() {
+// interface ContactLinksProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export default function ContactLinks({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className="mx-auto flex w-full max-w-[85%] flex-col items-center gap-3 xs:flex-row">
+    <div
+      className={twMerge(
+        'mx-auto flex w-full flex-col items-center gap-3 xs:flex-row',
+        className,
+      )}
+      {...props}
+    >
       {links.map((link, index) => (
         <BlockLink key={index} {...link} />
       ))}
@@ -49,9 +63,8 @@ export default function ContactLinks() {
 }
 
 function BlockLink({
-  icon,
+  icon: Icon,
   text,
-  otherIcon,
   className,
   classNameIconText,
   classText,
@@ -62,17 +75,17 @@ function BlockLink({
       href={href}
       target="_blank"
       className={twMerge(
-        'hover:border-secondary-yellow group rounded-lg border border-primary-grey px-3 py-2 transition-colors duration-300',
+        'group rounded-lg border border-primary-grey px-3 py-2 transition-colors duration-300 hover:border-secondary-yellow',
         className,
       )}
     >
-      <div className={twMerge('flex justify-center gap-3', classNameIconText)}>
-        {icon}
-        <span className={twMerge('text-lg', classText)}>{text}</span>
+      <div className={twMerge('flex items-center justify-center gap-3', classNameIconText)}>
+        <Icon
+          size={28}
+          className="text-primary-grey transition-colors duration-300 group-hover:text-secondary-yellow"
+        />
+        <span className={twMerge('text-sm md:text-lg', classText)}>{text}</span>
       </div>
-      {otherIcon && (
-        <ArrowUpFromDot className="rotate-90 transition-all duration-200 group-hover:rotate-45" />
-      )}
     </Link>
   );
 }

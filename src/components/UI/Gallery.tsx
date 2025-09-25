@@ -7,6 +7,7 @@ import { RowsPhotoAlbum } from 'react-photo-album';
 import 'react-photo-album/rows.css';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import ProjectFilters from './projectsPage/ProjectFilters';
 
 export interface ImageProps {
   src: StaticImageData;
@@ -25,12 +26,12 @@ interface GalleryProps {
 }
 
 export default function Gallery({ images, categories }: GalleryProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const filteredImages =
-    selectedCategory === 'all'
+    selectedCategory === 'All'
       ? images
       : images.filter((img) => img.category === selectedCategory);
 
@@ -48,35 +49,12 @@ export default function Gallery({ images, categories }: GalleryProps) {
 
   return (
     <div className="w-full">
-      <div className="mb-8 flex flex-wrap gap-2">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setSelectedCategory('all')}
-          className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-            selectedCategory === 'all'
-              ? 'bg-secondary-yellow text-primary-black'
-              : 'bg-gray-100 text-primary-black transition-colors hover:bg-gray-200'
-          }`}
-        >
-          All
-        </motion.button>
-        {categories &&
-          categories?.map((category) => (
-            <motion.button
-              key={category}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setSelectedCategory(category)}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                selectedCategory === category
-                  ? 'bg-secondary-yellow text-primary-black'
-                  : 'bg-gray-100 text-primary-black transition-colors hover:bg-gray-200'
-              }`}
-            >
-              {category}
-            </motion.button>
-          ))}
+      <div className="flex">
+        <ProjectFilters
+          categories={categories || []}
+          activeCategory={selectedCategory}
+          setActiveCategory={setSelectedCategory}
+        />
       </div>
 
       <motion.div

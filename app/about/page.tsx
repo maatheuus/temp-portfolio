@@ -1,6 +1,9 @@
 import Heading from '@/src/components/Layout/Heading';
+import Layout from '@/src/components/Layout/Layout';
 import Text from '@/src/components/Layout/Text';
+import ContactGrid from '@/src/components/UI/contact/ContactGrid';
 import GalleryLightbox from '@/src/components/UI/GalleryLightbox';
+import Tooltip from '@/src/helpers/Tooltip';
 import type { Metadata } from 'next';
 import { basketImg, photos, poaImg } from '../../src/util/imageData';
 
@@ -10,16 +13,12 @@ export const metadata: Metadata = {
 };
 export default function page() {
   return (
-    <section className="mx-auto w-fit p-10">
+    <Layout>
       <div className="space-y-12">
-        <div className="max-w-[36rem] space-y-2">
-          <Heading as="h1">About</Heading>
-          <Text className="text-lg text-primary-grey">
-            {' '}
-            Hello, I&apos;m Matheus, a Frontend Engineer based in Brazil, always
-            seeking new challenges.
-          </Text>
-        </div>
+        <Heading as="h1" className="text-center">
+          About
+        </Heading>
+
         <div className="[&>p]:hyphens-manual [&>p]:!text-primary-lightgrey">
           <Text className="strong mt-4 hyphens-auto text-lg">
             I am a <strong>Full-stack</strong> developer and I am immersed in
@@ -34,9 +33,16 @@ export default function page() {
           <Text className="mt-4 hyphens-auto text-lg">
             I started this career in 2022 with the goal of transforming my life.
             As a self-taught individual, I have always sought knowledge through
-            courses on YouTube, Udemy, and others... It took 727 days (1 year
-            and 11 months) of studying every day until I landed my first job at
-            a company in Portugal as a Front-End Developer.
+            courses on YouTube, Udemy, Frontend Master and others plataforms...
+          </Text>
+          <Text className="hyphens-auto text-lg">
+            <Tooltip content="Yes, I counted every single day haha">
+              <span className="cursor-help font-semibold text-secondary-yellow underline">
+                It took 727 days (1 year and 11 months)
+              </span>
+            </Tooltip>{' '}
+            of studying every single day until I landed my first job at a
+            company in Portugal as a Front-End Developer.
           </Text>
           <div className="[&>p]:!text-primary-lightgrey">
             <Text className="mt-4 hyphens-auto text-lg">
@@ -54,12 +60,16 @@ export default function page() {
               />
               <GalleryLightbox
                 title="I also take a lot of pictures"
+                mobileTitle="I also take good pictures"
                 images={photos}
               />
             </div>
           </div>
         </div>
       </div>
-    </section>
+      <section className="py-24 text-center">
+        <ContactGrid />
+      </section>
+    </Layout>
   );
 }

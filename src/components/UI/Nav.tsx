@@ -1,7 +1,13 @@
 'use client';
 
+import {
+  AddressBookIcon,
+  DesktopIcon,
+  HouseIcon,
+  SuitcaseIcon,
+  UserIcon,
+} from '@phosphor-icons/react';
 import { motion, useAnimation } from 'framer-motion';
-import { BriefcaseBusiness, Computer, Contact, House, User, } from 'lucide-react';
 import { Link } from 'next-view-transitions';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
@@ -14,11 +20,11 @@ type LinkProps = {
 };
 
 const linksNav: LinkProps[] = [
-  { href: '/', label: 'Home', icon: <House /> },
-  { href: '/about', label: 'About', icon: <User /> },
-  { href: '/works', label: 'Works', icon: <BriefcaseBusiness /> },
-  { href: '/projects', label: 'Projects', icon: <Computer /> },
-  { href: '/contact', label: 'Contact', icon: <Contact /> },
+  { href: '/', label: 'Home', icon: <HouseIcon size={28} /> },
+  { href: '/about', label: 'About', icon: <UserIcon size={28} /> },
+  { href: '/works', label: 'Works', icon: <SuitcaseIcon size={28} /> },
+  { href: '/projects', label: 'Projects', icon: <DesktopIcon size={28} /> },
+  { href: '/contact', label: 'Contact', icon: <AddressBookIcon size={28} /> },
 ];
 
 export default function Nav() {
@@ -65,7 +71,7 @@ export default function Nav() {
                   'relative hidden transition-colors duration-200 sm:block',
                   pathname === link.href
                     ? 'text-secondary-yellow'
-                    : 'hover:text-secondary-yellow/60 text-primary-white',
+                    : 'text-primary-white hover:text-secondary-yellow/60',
                 )}
                 animate={controlsText}
                 initial={{ opacity: 0, y: '10px' }}

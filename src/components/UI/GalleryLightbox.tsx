@@ -22,6 +22,7 @@ export interface ImageProps {
 
 interface GalleryLightboxProps {
   title?: string;
+  mobileTitle?: string;
   seeMore?: boolean;
   images: ImageProps[];
   categories?: string[];
@@ -30,6 +31,7 @@ interface GalleryLightboxProps {
 export default function GalleryLightbox({
   images,
   title,
+  mobileTitle,
   seeMore = true,
 }: GalleryLightboxProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -43,7 +45,18 @@ export default function GalleryLightbox({
   return (
     <div className="w-full">
       <div className="my-6 flex items-center gap-x-3">
-        <Text className="text-xl text-primary-white">{title}</Text>
+        {mobileTitle ? (
+          <>
+            <Text className="hidden text-xl text-primary-white lg:inline">
+              {title}
+            </Text>
+            <Text className="inline text-lg text-primary-white lg:hidden">
+              {mobileTitle}
+            </Text>
+          </>
+        ) : (
+          <Text className="text-lg text-primary-white lg:text-xl">{title}</Text>
+        )}
         {seeMore && (
           <Link
             href="/gallery"
