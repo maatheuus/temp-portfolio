@@ -24,7 +24,7 @@ body {
 }
 
 @layer utilities {
-  .strong > strong {
+  .strong>strong {
     @apply text-secondary-yellow font-medium underline;
   }
 
@@ -39,6 +39,10 @@ body {
   /* width */
   ::-webkit-scrollbar {
     @apply hidden;
+  }
+
+  .tags {
+    @apply cursor-pointer rounded-full bg-yellow-100 px-3 py-1 text-sm font-medium text-yellow-800 transition-colors duration-200 hover:bg-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-300 dark:hover:bg-yellow-800/80;
   }
 }
 

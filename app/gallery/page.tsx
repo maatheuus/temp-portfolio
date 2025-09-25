@@ -3,7 +3,7 @@ import { basketImg, photos, poaImg } from '../../src/util/imageData';
 
 const allImages: ImageProps[] = [...basketImg, ...poaImg, ...photos];
 
-const categories = ['Basketball', 'Porto Alegre', 'Nature'];
+const categories = ['All','Basketball', 'Porto Alegre', 'Nature'];
 
 export default function GalleryPage() {
   

@@ -1,34 +1,41 @@
+import { ArrowUpRightIcon, GithubLogoIcon } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Github } from 'lucide-react';
 import Link from 'next/link';
-import Heading from '../Layout/Heading';
-import Text from '../Layout/Text';
+import HeadingTopText from '../Layout/HeadingTopText';
+import Layout from '../Layout/Layout';
+import ProjectsCarousel from './ProjectsCarousel';
 
 const projects = [
   {
     title: 'E-commerce Platform',
-    description:
-      'A full-stack e-commerce platform with real-time inventory management, payment processing, and admin dashboard.',
-    image: '/projects/ecommerce.jpg',
+    tagline:
+      'A full-stack e-commerce platform built for performance and scale.',
+    challenge:
+      'The main goal was to create a seamless shopping experience with real-time inventory updates and a secure payment gateway, while giving admins a simple way to manage products.',
+    solution:
+      'I built a Next.js frontend for fast page loads and a Node.js backend with Prisma for database management. Stripe integration handles payments securely, and a custom admin dashboard allows for easy content management.',
+    images: [
+      'https://picsum.photos/800/450?random=1',
+      'https://picsum.photos/800/450?random=2',
+      'https://picsum.photos/800/450?random=3',
+    ],
     tags: ['Next.js', 'TypeScript', 'Prisma', 'Stripe'],
     github: 'https://github.com',
     live: 'https://example.com',
   },
   {
     title: 'Task Management App',
-    description:
-      'A collaborative task management application with real-time updates, team features, and progress tracking.',
-    image: '/projects/taskmanager.jpg',
+    tagline:
+      'A collaborative task management application with real-time updates.',
+    challenge:
+      'The challenge was to build a highly interactive UI that reflects database changes in real-time across all connected clients, using a non-relational database.',
+    solution:
+      'The app uses a React frontend and a Node.js backend with Socket.io for real-time communication. User data and tasks are stored in MongoDB, ensuring flexibility and scalability.',
+    images: [
+      'https://picsum.photos/800/450?random=4',
+      'https://picsum.photos/800/450?random=5',
+    ],
     tags: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
-    github: 'https://github.com',
-    live: 'https://example.com',
-  },
-  {
-    title: 'AI Image Generator',
-    description:
-      'An AI-powered image generation tool that creates custom artwork based on text prompts and style preferences.',
-    image: '/projects/ai-generator.jpg',
-    tags: ['Python', 'TensorFlow', 'React', 'FastAPI'],
     github: 'https://github.com',
     live: 'https://example.com',
   },
@@ -36,86 +43,67 @@ const projects = [
 
 const FeaturedProjects = () => {
   return (
-    <section className="py-20">
+    <Layout>
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-16 text-center"
-        >
-          <Heading as="h2" className="mb-4 text-4xl">
-            Featured Projects
-          </Heading>
-          <Text className="mx-auto max-w-2xl">
-            A selection of my recent work showcasing my expertise in full-stack
-            development and modern technologies.
-          </Text>
-        </motion.div>
+        <HeadingTopText
+          title="Featured Projects"
+          description="A selection of my recent work showcasing my expertise in full-stack
+            development and modern technologies."
+        />
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
+        <div className="space-y-20">
+          {projects.map((project) => (
             <motion.article
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl"
+              viewport={{ once: true, margin: '-150px' }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="group"
             >
-              <div className="relative aspect-video overflow-hidden">
-                <motion.img
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  src={project.image}
-                  alt={project.title}
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="mb-8 transition-all duration-300 group-hover:shadow-2xl">
+                <ProjectsCarousel images={project.images} />
               </div>
 
-              <div className="relative p-6">
-                <div className="absolute -top-12 left-6 h-24 w-24 rounded-full bg-secondary-yellow/10 blur-2xl transition-all duration-300 group-hover:bg-secondary-yellow/20" />
+              <h3 className="mb-2 text-3xl font-bold">{project.title}</h3>
+              <p className="mb-6 text-lg text-zinc-600 dark:text-zinc-400">
+                {project.tagline}
+              </p>
 
-                <h3 className="relative mb-2 text-xl font-semibold transition-colors duration-300 group-hover:text-secondary-yellow">
-                  {project.title}
-                </h3>
-                <Text className="relative mb-4 text-sm text-gray-600">
-                  {project.description}
-                </Text>
+              <div className="mb-6 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="tags">
+                    {tag}
+                  </span>
+                ))}
+              </div>
 
-                <div className="relative mb-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-secondary-yellow/10 px-3 py-1 text-xs font-medium text-secondary-yellow transition-colors duration-300 group-hover:bg-secondary-yellow group-hover:text-primary-black"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+              <div className="prose prose-zinc dark:prose-invert max-w-none">
+                <h4 className="font-semibold">The Challenge</h4>
+                <p>{project.challenge}</p>
+                <h4 className="font-semibold">The Solution</h4>
+                <p>{project.solution}</p>
+              </div>
 
-                <div className="relative flex items-center gap-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-secondary-yellow"
-                  >
-                    <Github className="h-4 w-4" />
-                    Code
-                  </a>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-secondary-yellow"
-                  >
-                    <ArrowUpRight className="h-4 w-4" />
-                    Live Demo
-                  </a>
-                </div>
+              <div className="relative mt-6 flex items-center gap-4">
+                <Link
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-secondary-yellow"
+                >
+                  <GithubLogoIcon className="h-4 w-4" />
+                  Code
+                </Link>
+                <Link
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-secondary-yellow"
+                >
+                  <ArrowUpRightIcon className="h-4 w-4" />
+                  Live Demo
+                </Link>
               </div>
             </motion.article>
           ))}
@@ -129,35 +117,14 @@ const FeaturedProjects = () => {
           className="mt-12 text-center"
         >
           <Link href="/projects">
-            <motion.div
-              className="inline-flex items-center gap-2 rounded-full bg-secondary-yellow px-6 py-3 text-sm font-medium text-primary-black"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{
-                type: 'spring',
-                stiffness: 400,
-                damping: 17,
-              }}
-            >
-              <motion.span
-                initial={{ x: 0 }}
-                whileHover={{ x: -4 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-              >
-                View All Projects
-              </motion.span>
-              <motion.div
-                initial={{ x: 0 }}
-                whileHover={{ x: 4 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-              >
-                <ArrowUpRight className="h-4 w-4" />
-              </motion.div>
-            </motion.div>
+            <div className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-yellow-500 px-6 py-3 text-sm font-medium text-black transition-all duration-300 hover:scale-105 hover:bg-yellow-400">
+              <span>View All Projects</span>
+              <ArrowUpRightIcon className="h-4 w-4" />
+            </div>
           </Link>
         </motion.div>
       </div>
-    </section>
+    </Layout>
   );
 };
 

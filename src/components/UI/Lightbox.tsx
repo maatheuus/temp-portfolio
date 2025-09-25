@@ -1,7 +1,7 @@
 'use client';
 
+import { XIcon } from '@phosphor-icons/react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X } from 'lucide-react';
 import Image, { type StaticImageData } from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -57,7 +57,7 @@ export default function Lightbox({
           onClick={onClose}
           className="absolute right-4 top-4 text-white hover:text-secondary-yellow"
         >
-          <X size={24} />
+          <XIcon size={24} />
         </button>
 
         <div className="relative h-full w-full max-w-7xl p-4">
@@ -73,7 +73,7 @@ export default function Lightbox({
               src={images[currentIndex].src}
               alt={images[currentIndex].alt}
               fill
-              className="object-cover size-full"
+              className="size-full object-cover"
               onLoadingComplete={() => setIsLoaded(true)}
               priority
             />
@@ -110,4 +110,4 @@ export default function Lightbox({
       </motion.div>
     </AnimatePresence>
   );
-} 
+}
