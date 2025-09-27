@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 
 import { twMerge } from 'tailwind-merge';
@@ -26,10 +28,14 @@ export default function HeadingTopText({
       {...fadeInAnimation}
       className={twMerge('mb-10 text-center', className)}
     >
-      <Heading as="h2" className="mb-4">
+      <Heading as="h1" className="mb-4 text-4xl md:text-5xl lg:text-7xl">
         {title}
       </Heading>
-      <Text>{description}</Text>
+      {description && (
+        <Text className="mx-auto max-w-2xl text-base md:text-lg text-primary-grey">
+          {description}
+        </Text>
+      )}
     </motion.div>
   );
 }

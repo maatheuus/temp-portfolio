@@ -61,7 +61,8 @@ const FeaturedProjects = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="group"
             >
-              <div className="mb-8 transition-all duration-300 group-hover:shadow-2xl">
+              <div className="relative mb-8 overflow-hidden rounded-lg">
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary-yellow/0 via-secondary-yellow/0 to-secondary-yellow/40 opacity-100" />
                 <ProjectsCarousel images={project.images} />
               </div>
 
@@ -79,10 +80,14 @@ const FeaturedProjects = () => {
               </div>
 
               <div className="prose prose-zinc dark:prose-invert max-w-none">
-                <h4 className="font-semibold">The Challenge</h4>
-                <p>{project.challenge}</p>
-                <h4 className="font-semibold">The Solution</h4>
-                <p>{project.solution}</p>
+                <h4 className="text-lg font-semibold text-secondary-yellow">
+                  The Challenge
+                </h4>
+                <p className="text-base">{project.challenge}</p>
+                <h4 className="text-lg font-semibold text-secondary-yellow">
+                  The Solution
+                </h4>
+                <p className="text-base">{project.solution}</p>
               </div>
 
               <div className="relative mt-6 flex items-center gap-4">

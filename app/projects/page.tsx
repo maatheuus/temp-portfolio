@@ -1,7 +1,6 @@
 'use client';
 
-import Heading from '@/src/components/Layout/Heading';
-import Text from '@/src/components/Layout/Text';
+import HeadingTopText from '@/src/components/Layout/HeadingTopText';
 import ContactGrid from '@/src/components/UI/contact/ContactGrid';
 import { allProjects } from '@/src/components/UI/projectsPage/mock';
 import ProjectCard from '@/src/components/UI/projectsPage/ProjectCard';
@@ -25,19 +24,10 @@ const Page = () => {
     <main className="min-h-screen bg-primary-white text-primary-black dark:bg-primary-black dark:text-primary-white">
       <section className="py-24 sm:py-32">
         <div className="container mx-auto max-w-5xl px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-          >
-            <Heading as="h1" className="mb-4 text-5xl sm:text-7xl">
-              Selected Works
-            </Heading>
-            <Text className="mx-auto max-w-2xl text-lg text-primary-grey">
-              Uma seleção de projetos que demonstram minha paixão por criar
-              soluções digitais, desde o design até o deploy.
-            </Text>
-          </motion.div>
+          <HeadingTopText
+            title=" Selected Works"
+            description="A selection of projects that demonstrate my passion for creating digital solutions, from design to deployment."
+          />
         </div>
       </section>
 

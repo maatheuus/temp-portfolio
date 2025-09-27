@@ -43,7 +43,7 @@ const ProjectsCarousel = ({
 
   return (
     <div
-      className={`group relative aspect-video w-full overflow-hidden rounded-lg shadow-lg ${className ?? ''}`}
+      className={`group relative aspect-video w-full overflow-hidden rounded-lg ${className ?? ''}`}
     >
       <AnimatePresence initial={false} custom={direction}>
         <motion.img

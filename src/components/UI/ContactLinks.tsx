@@ -41,8 +41,6 @@ const links: LinkData[] = [
   },
 ];
 
-// interface ContactLinksProps extends React.HTMLAttributes<HTMLDivElement> {}
-
 export default function ContactLinks({
   className,
   ...props
@@ -79,7 +77,12 @@ function BlockLink({
         className,
       )}
     >
-      <div className={twMerge('flex items-center justify-center gap-3', classNameIconText)}>
+      <div
+        className={twMerge(
+          'flex items-center justify-center gap-3',
+          classNameIconText,
+        )}
+      >
         <Icon
           size={28}
           className="text-primary-grey transition-colors duration-300 group-hover:text-secondary-yellow"

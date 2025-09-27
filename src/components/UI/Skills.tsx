@@ -1,6 +1,11 @@
 import { motion } from 'framer-motion';
 
-import { CodeIcon, DatabaseIcon, HardDrivesIcon, type Icon } from '@phosphor-icons/react';
+import {
+  CodeIcon,
+  DatabaseIcon,
+  HardDrivesIcon,
+  type Icon,
+} from '@phosphor-icons/react';
 import { twMerge } from 'tailwind-merge';
 import HeadingTopText from '../Layout/HeadingTopText';
 import Layout from '../Layout/Layout';

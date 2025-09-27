@@ -16,11 +16,11 @@ export default function Page() {
     <Layout>
       <ContactLinks />
       <div>
-        <Heading as="h1" className="mb-8">
+        <Heading as="h1" className="mb-8 text-3xl md:text-5xl lg:text-7xl">
           Hello, I&apos;m Matheus, a Frontend Engineer based in Brazil, always
           seeking new challenges.
         </Heading>{' '}
-        <Text>
+        <Text className="max-w-2xl text-base md:text-lg">
           I&apos;m currently working for a company as a front-end developer.
         </Text>
         <div className="inline-flex flex-wrap gap-x-1">

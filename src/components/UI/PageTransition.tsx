@@ -57,4 +57,4 @@ export default function PageTransition({ children }: PageTransitionProps) {
       {children}
     </motion.div>
   );
-} 
+}

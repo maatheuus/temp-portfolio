@@ -63,7 +63,7 @@ const TimelineCard = ({ item }: { item: (typeof timelineData)[0] }) => {
           )}
           <div>
             <h3 className="text-xl font-semibold">{item.title}</h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-400">
               {item.type === 'work' ? item.company : item.institution}
             </p>
           </div>

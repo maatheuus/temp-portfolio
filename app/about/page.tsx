@@ -1,4 +1,4 @@
-import Heading from '@/src/components/Layout/Heading';
+import HeadingTopText from '@/src/components/Layout/HeadingTopText';
 import Layout from '@/src/components/Layout/Layout';
 import Text from '@/src/components/Layout/Text';
 import ContactGrid from '@/src/components/UI/contact/ContactGrid';
@@ -15,11 +15,12 @@ export default function page() {
   return (
     <Layout>
       <div className="space-y-12">
-        <Heading as="h1" className="text-center">
-          About
-        </Heading>
+        <HeadingTopText
+          title="About Me"
+          description="A little bit about myself and my work experience"
+        />
 
-        <div className="[&>p]:hyphens-manual [&>p]:!text-primary-lightgrey">
+        <div className="[&>p]:hyphens-manual">
           <Text className="strong mt-4 hyphens-auto text-lg">
             I am a <strong>Full-stack</strong> developer and I am immersed in
             the world of web development. With intermediate skills in
@@ -44,7 +45,7 @@ export default function page() {
             of studying every single day until I landed my first job at a
             company in Portugal as a Front-End Developer.
           </Text>
-          <div className="[&>p]:!text-primary-lightgrey">
+          <div className="">
             <Text className="mt-4 hyphens-auto text-lg">
               But of course, during these nearly 2 years, I had my breaks from
               the study routine. During this free time, I:
