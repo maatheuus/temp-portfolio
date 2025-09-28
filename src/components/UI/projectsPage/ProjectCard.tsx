@@ -8,10 +8,20 @@ import {
 } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
-import { ProjectBadge } from '../featuredProjects/ProjectBadge';
+import {
+  ProjectBadge,
+  type ProjectStatus,
+} from '../featuredProjects/ProjectBadge';
 import useOverlapDetector from './hooks/useOverlapDetector';
+import type { allProjects } from './mock';
 
-const ProjectCard = ({ project, index }: { project: any; index: number }) => {
+const ProjectCard = ({
+  project,
+  index,
+}: {
+  project: (typeof allProjects)[number];
+  index: number;
+}) => {
   const imgRef = useRef<HTMLDivElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
   const overlayVisible = useOverlapDetector(imgRef, textRef, 14);
@@ -53,7 +63,9 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
           </div>
           <div className="mb-3 mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
             <h3 className="text-3xl font-bold">{project.title}</h3>
-            {project.status && <ProjectBadge status={project.status} />}
+            {project.status && (
+              <ProjectBadge status={project.status as ProjectStatus} />
+            )}
           </div>
           <p className="mb-8 text-lg text-primary-grey">{project.tagline}</p>
 
