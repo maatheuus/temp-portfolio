@@ -8,12 +8,13 @@ import {
 } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
+import { ProjectBadge } from '../featuredProjects/ProjectBadge';
 import useOverlapDetector from './hooks/useOverlapDetector';
 
 const ProjectCard = ({ project, index }: { project: any; index: number }) => {
   const imgRef = useRef<HTMLDivElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
-  const overlayVisible = useOverlapDetector(imgRef, textRef, 14); // ajuste tolerância se quiser
+  const overlayVisible = useOverlapDetector(imgRef, textRef, 14);
 
   return (
     <motion.article
@@ -29,12 +30,10 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
       }}
       className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2"
     >
-      {/* imagem sticky - z-0 para permitir overlay da coluna de texto sobre ela */}
       <motion.div
         ref={imgRef}
         className={`sticky top-24 z-0 aspect-video ${index % 2 === 1 ? 'lg:order-last' : ''}`}
       >
-        {/* passa a classe de blur diretamente para o carousel */}
         <FeaturedProjectsCarousel
           images={project.images}
           className={
@@ -52,7 +51,10 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
             <span>•</span>
             <span>{project.year}</span>
           </div>
-          <h3 className="mb-3 mt-2 text-3xl font-bold">{project.title}</h3>
+          <div className="mb-3 mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <h3 className="text-3xl font-bold">{project.title}</h3>
+            {project.status && <ProjectBadge status={project.status} />}
+          </div>
           <p className="mb-8 text-lg text-primary-grey">{project.tagline}</p>
 
           <div className="mb-8 space-y-6 text-primary-grey">
@@ -101,22 +103,26 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
           </div>
 
           <div className="flex items-center gap-4 border-t border-zinc-200 pt-6 dark:border-zinc-800">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 font-medium transition-colors hover:text-secondary-yellow"
-            >
-              <GithubLogoIcon size={16} /> Code
-            </a>
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 font-medium transition-colors hover:text-secondary-yellow"
-            >
-              <ArrowUpRightIcon size={16} /> Live Demo
-            </a>
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 font-medium transition-colors hover:text-secondary-yellow"
+              >
+                <GithubLogoIcon size={16} /> Code
+              </a>
+            )}
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 font-medium transition-colors hover:text-secondary-yellow"
+              >
+                <ArrowUpRightIcon size={16} /> Live Demo
+              </a>
+            )}
           </div>
         </div>
       </div>

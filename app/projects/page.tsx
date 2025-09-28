@@ -8,7 +8,7 @@ import ProjectFilters from '@/src/components/UI/projectsPage/ProjectFilters';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
 
-const categories = ['All', 'Full-Stack', 'Frontend', 'Experiments'];
+const categories = ['All', 'Full-Stack', 'Front-End'];
 const Page = () => {
   const [activeCategory, setActiveCategory] = useState('All');
 
