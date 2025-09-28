@@ -60,7 +60,7 @@ export default function GalleryLightbox({
         {seeMore && (
           <Link
             href="/gallery"
-            className="mt-1 text-xs text-secondary-yellow no-underline"
+            className="mt-1 hidden text-xs text-secondary-yellow no-underline md:inline-block"
           >
             (see more...)
           </Link>

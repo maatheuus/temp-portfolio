@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const ProjectFilters = ({
   activeCategory,
   setActiveCategory,
-  categories
+  categories,
 }: {
   activeCategory: string;
   setActiveCategory: (category: string) => void;
