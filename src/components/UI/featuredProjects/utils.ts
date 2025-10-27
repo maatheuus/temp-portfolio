@@ -19,7 +19,7 @@ export const projects = [
     solution:
       'I built Vegcom with Next.js and Tailwind, using reusable components and smooth animations to offer a modern and welcoming experience. We implemented a recipe system with advanced search, filters, favorites, profile pages with sections like "Masterchef in Action" and "Favorites of the Heart," as well as a chat styled in the brands tone. Everything was designed to grow scalably, with room for premium features in the future.',
     images: [vegcomImg1, vegcomImg2, vegcomImg3, vegcomImg4],
-    tags: ['Next.js', 'TypeScript', 'PostgreSQL'],
+    tags: ['Next.js', 'TypeScript', 'Nest.js', 'Prisma', 'PostgreSQL'],
   },
   {
     title: 'Movie Life',

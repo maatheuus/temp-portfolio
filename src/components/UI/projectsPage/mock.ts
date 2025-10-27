@@ -32,7 +32,14 @@ export const allProjects = [
       'Community-driven recipe sharing',
     ],
     images: [vegcomImg1, vegcomImg2, vegcomImg3, vegcomImg4],
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Prisma'],
+    tags: [
+      'Next.js',
+      'TypeScript',
+      'Tanstack Query',
+      'Nest.js',
+      'PostgreSQL',
+      'Prisma',
+    ],
   },
   {
     category: 'Full-Stack',

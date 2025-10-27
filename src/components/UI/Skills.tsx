@@ -38,10 +38,9 @@ const skillsData: SkillCategory[] = [
     icon: HardDrivesIcon,
     skills: [
       { name: 'Node.js' },
+      { name: 'Nest.js' },
       { name: 'Express' },
-      { name: 'REST APIs' },
       { name: 'Prisma' },
-      { name: 'Zod' },
     ],
   },
   {
