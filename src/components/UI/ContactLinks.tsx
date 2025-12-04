@@ -11,9 +11,6 @@ type LinkData = {
   href: string;
   icon: Icon;
   text: string;
-  className?: string;
-  classNameIconText?: string;
-  classText?: string;
 };
 
 const links: LinkData[] = [
@@ -21,23 +18,16 @@ const links: LinkData[] = [
     href: 'https://www.linkedin.com/in/matheusmaat/',
     icon: LinkedinLogoIcon,
     text: 'Connect with me',
-    className: 'flex w-full items-center justify-between',
   },
   {
     href: 'mailto:matts14smkd@gmail.com',
     icon: AtIcon,
     text: 'Send me an email',
-    className: 'w-full xs:w-fit',
-    classText: 'block text-lg xs:hidden',
-    classNameIconText: 'justify-start',
   },
   {
     href: 'https://github.com/maatheuus',
     icon: GithubLogoIcon,
     text: 'Check out my GitHub',
-    classText: 'block text-lg xs:hidden',
-    className: 'w-full xs:w-fit',
-    classNameIconText: 'justify-start',
   },
 ];
 
@@ -47,10 +37,7 @@ export default function ContactLinks({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={twMerge(
-        'mx-auto flex w-full flex-col items-center gap-3 xs:flex-row',
-        className,
-      )}
+      className={twMerge('flex w-full flex-wrap items-center gap-3', className)}
       {...props}
     >
       {links.map((link, index) => (
@@ -60,35 +47,57 @@ export default function ContactLinks({
   );
 }
 
-function BlockLink({
-  icon: Icon,
-  text,
-  className,
-  classNameIconText,
-  classText,
-  href,
-}: LinkData) {
+function BlockLink({ icon: Icon, text, href }: LinkData) {
   return (
     <Link
       href={href}
       target="_blank"
-      className={twMerge(
-        'group rounded-lg border border-primary-grey px-3 py-2 transition-colors duration-300 hover:border-secondary-yellow',
-        className,
-      )}
+      className="group flex items-center gap-2 rounded-full border border-primary-grey px-4 py-2 transition-colors duration-300 hover:border-secondary-yellow hover:bg-primary-grey/5 dark:border-primary-grey dark:hover:border-secondary-yellow dark:hover:bg-primary-white/5"
     >
-      <div
-        className={twMerge(
-          'flex items-center justify-center gap-3',
-          classNameIconText,
-        )}
-      >
-        <Icon
-          size={28}
-          className="text-primary-grey transition-colors duration-300 group-hover:text-secondary-yellow"
-        />
-        <span className={twMerge('text-sm md:text-lg', classText)}>{text}</span>
-      </div>
+      <Icon
+        size={20}
+        className="text-primary-grey transition-colors duration-300 group-hover:text-secondary-yellow dark:text-primary-lightgrey dark:group-hover:text-secondary-yellow"
+      />
+      <span className="text-sm font-medium text-primary-grey transition-colors duration-300 group-hover:text-secondary-yellow dark:text-primary-lightgrey dark:group-hover:text-secondary-yellow">
+        {text}
+      </span>
     </Link>
   );
 }
+
+// function ThemeToggle() {
+//   const { theme, setTheme } = useTheme();
+//   const [mounted, setMounted] = useState(false);
+
+//   useEffect(() => {
+//     setMounted(true);
+//   }, []);
+
+//   if (!mounted) {
+//     return (
+//       <div className="flex size-10 items-center justify-center rounded-full border border-primary-grey p-2 opacity-50">
+//         <SunIcon size={20} className="text-primary-grey" />
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <button
+//       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+//       className="group flex size-10 items-center justify-center rounded-full border border-primary-grey transition-colors duration-300 hover:border-secondary-yellow hover:bg-primary-grey/5 dark:border-primary-grey dark:hover:border-secondary-yellow dark:hover:bg-primary-white/5"
+//       aria-label="Toggle theme"
+//     >
+//       {theme === 'dark' ? (
+//         <SunIcon
+//           size={20}
+//           className="text-primary-grey transition-colors duration-300 group-hover:text-secondary-yellow dark:text-primary-lightgrey dark:group-hover:text-secondary-yellow"
+//         />
+//       ) : (
+//         <MoonIcon
+//           size={20}
+//           className="text-primary-grey transition-colors duration-300 group-hover:text-secondary-yellow"
+//         />
+//       )}
+//     </button>
+//   );
+// }
