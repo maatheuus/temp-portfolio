@@ -1,15 +1,11 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { type RefObject, useRef } from 'react';
+import { useRef } from 'react';
 import TimelineCard from './TimelineCard';
 import { timelineData } from './utils';
 
-interface Props {
-  containerRef: RefObject<HTMLDivElement>;
-}
-
-export default function TimelineContent({ containerRef }: Props) {
+export default function TimelineContent() {
   const timelineContentRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({

@@ -16,7 +16,7 @@ const Timeline = () => {
           description="My professional journey and academic background that shaped my
             expertise in technology."
         />
-        <TimelineContent containerRef={containerRef} />
+        <TimelineContent />
       </div>
       <section className="pt-24 text-center">
         <ContactGrid />

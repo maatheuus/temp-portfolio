@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://matheusmb.vercel.app/icon.png',
+        url: './icon.png',
         width: 1200,
         height: 630,
         alt: 'Maat - Frontend Engineer Portfolio',
@@ -62,14 +62,13 @@ export const metadata: Metadata = {
     title: 'Maat | Frontend Engineer & Web Developer',
     description:
       'Frontend engineer from Brazil specializing in React, Next.js, and TypeScript. View my portfolio and projects.',
-    images: ['https://matheusmb.vercel.app/icon.png'],
+    images: ['./icon.png'],
   },
   icons: {
     icon: '/icon.png',
     apple: '/apple-touch-icon.png',
     shortcut: '/favicon.ico',
   },
-  manifest: '/site.webmanifest',
   robots: {
     index: true,
     follow: true,

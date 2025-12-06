@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Maat - Frontend Engineer Portfolio
 
-## Getting Started
+A modern, performant, and accessible portfolio website built with Next.js, React, and TypeScript. Showcasing web development expertise with smooth animations, responsive design, and optimized performance.
 
-First, run the development server:
+## 🎯 Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This is a personal portfolio website for **Matheus MB** (Maat), a frontend engineer based in Brazil specializing in building modern web experiences. The portfolio features:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Responsive Design** - Mobile-first approach with Tailwind CSS
+- **Smooth Animations** - Powered by Framer Motion for engaging interactions
+- **Gallery & Lightbox** - Showcase photos and projects with interactive lightbox
+- **Project Showcase** - Featured projects with filtering and carousel components
+- **Contact Section** - Multiple ways to get in touch
+- **Timeline** - Work experience and timeline visualization
+- **Performance Optimized** - Built with Next.js 15+ for optimal performance
+- **SEO Optimized** - Comprehensive metadata for search engines and social sharing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎨 Key Features
 
-## Learn More
+### Responsive Design
 
-To learn more about Next.js, take a look at the following resources:
+Built with mobile-first approach using Tailwind CSS. Fully responsive across all device sizes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Smooth Page Transitions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Implemented with Framer Motion for elegant animations between pages and sections.
 
-## Deploy on Vercel
+### Interactive Gallery
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Custom photo gallery with lightbox functionality for showcasing photography and projects.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Dynamic Project Showcase
+
+Featured projects section with filtering capabilities and carousel components.
+
+### Contact Section
+
+Multiple contact cards with links to social media and contact methods.
+
+### Work Timeline
+
+Beautiful timeline component displaying work experience and career progression.
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 👤 Author
+
+**Matheus MB** (Maat)
+
+- Website: [matheusmb.vercel.app](https://matheusmb.vercel.app)
+- GitHub: [@maatheuus](https://github.com/maatheuus)
