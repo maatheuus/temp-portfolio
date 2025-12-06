@@ -6,45 +6,90 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Maat | Frontend Engineer',
-    template: '%s | Maat Portfolio',
+    default: 'Maat | Frontend Engineer & Web Developer',
+    template: '%s | Maat',
   },
   description:
-    "I'm Maat, a frontend developer based in Brazil. I build performant, accessible, and modern web experiences.",
+    'Frontend engineer from Brazil specializing in React, Next.js, and TypeScript. Building performant, accessible, and modern web experiences. View my portfolio and projects.',
   keywords: [
     'frontend developer',
     'web developer',
-    'React',
-    'Next.js',
+    'React developer',
+    'Next.js developer',
+    'TypeScript developer',
+    'UI developer',
+    'web designer',
     'portfolio',
     'JavaScript',
     'TypeScript',
+    'web development',
+    'software developer',
+    'Brazil developer',
   ],
   authors: [
     {
-      name: 'Maat',
+      name: 'Matheus MB',
       url: 'https://matheusmb.vercel.app',
     },
   ],
+  creator: 'Matheus MB',
+  publisher: 'Matheus MB',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: 'Maat | Frontend Engineer',
+    title: 'Maat | Frontend Engineer & Web Developer',
     description:
-      "I'm Maat, a frontend developer based in Brazil. I build performant, accessible, and modern web experiences.",
+      'Frontend engineer from Brazil specializing in React, Next.js, and TypeScript. View my portfolio and projects.',
     url: 'https://matheusmb.vercel.app',
     siteName: 'Maat Portfolio',
-    locale: 'br_BR',
+    locale: 'pt_BR',
     type: 'website',
+    images: [
+      {
+        url: 'https://matheusmb.vercel.app/icon.png',
+        width: 1200,
+        height: 630,
+        alt: 'Maat - Frontend Engineer Portfolio',
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Maat | Frontend Engineer',
+    title: 'Maat | Frontend Engineer & Web Developer',
     description:
-      "I'm Maat, a frontend developer based in Brazil. I build performant, accessible, and modern web experiences.",
+      'Frontend engineer from Brazil specializing in React, Next.js, and TypeScript. View my portfolio and projects.',
+    images: ['https://matheusmb.vercel.app/icon.png'],
   },
   icons: {
     icon: '/icon.png',
     apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
   },
+  manifest: '/site.webmanifest',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://matheusmb.vercel.app',
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Maat Portfolio',
+  },
+  category: 'technology',
 };
 
 export default function RootLayout({
