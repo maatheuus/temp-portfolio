@@ -4,14 +4,12 @@ const badgeConfig = {
   'in-progress': {
     text: 'In Progress',
     icon: <WrenchIcon size={12} />,
-    className:
-      'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300',
+    className: 'bg-blue-900/50 text-blue-300',
   },
   outdated: {
     text: 'Outdated',
     icon: <InfoIcon size={12} />,
-    className:
-      'bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300',
+    className: 'bg-amber-900/50 text-amber-300',
   },
 };
 

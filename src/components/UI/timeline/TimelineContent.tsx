@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { type RefObject } from 'react';
+import { type RefObject, useRef } from 'react';
 import TimelineCard from './TimelineCard';
 import { timelineData } from './utils';
 
@@ -10,8 +10,10 @@ interface Props {
 }
 
 export default function TimelineContent({ containerRef }: Props) {
+  const timelineContentRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: timelineContentRef,
     offset: ['start start', 'end end'],
   });
 
@@ -25,7 +27,7 @@ export default function TimelineContent({ containerRef }: Props) {
         style={{ height: lineHeight }}
       />
 
-      <div className="space-y-8 md:space-y-12">
+      <div ref={timelineContentRef} className="space-y-8 md:space-y-12">
         {timelineData.map((item, index) => {
           const isLeft = index % 2 === 0;
           return (

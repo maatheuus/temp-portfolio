@@ -42,7 +42,7 @@ body {
   }
 
   .tags {
-    @apply cursor-pointer rounded-full bg-yellow-100 px-3 py-1 text-sm font-medium text-yellow-800 transition-colors duration-200 hover:bg-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-300 dark:hover:bg-yellow-800/80;
+    @apply cursor-text rounded-full bg-yellow-900/50 hover:bg-yellow-800/80 px-3 py-1 text-sm font-medium text-yellow-300 transition-colors duration-200;
   }
 }
 

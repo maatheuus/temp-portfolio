@@ -17,7 +17,7 @@ const ProjectFilters = ({
         className={`relative rounded-full px-5 py-2 text-sm font-medium transition-colors ${
           activeCategory === category
             ? 'text-primary-black'
-            : 'text-primary-grey hover:text-primary-black dark:hover:text-primary-white'
+            : 'text-primary-grey hover:text-primary-white'
         }`}
       >
         {activeCategory === category && (

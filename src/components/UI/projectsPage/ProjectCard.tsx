@@ -15,6 +15,8 @@ import {
 import useOverlapDetector from './hooks/useOverlapDetector';
 import type { allProjects } from './mock';
 
+const titleClasses = 'text-lg font-bold text-primary-white md:text-xl';
+
 const ProjectCard = ({
   project,
   index,
@@ -25,6 +27,17 @@ const ProjectCard = ({
   const imgRef = useRef<HTMLDivElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
   const overlayVisible = useOverlapDetector(imgRef, textRef, 14);
+
+  const projectText = [
+    {
+      title: 'The Challenge',
+      desc: project.challenge,
+    },
+    {
+      title: 'The Solution',
+      desc: project.solution,
+    },
+  ];
 
   return (
     <motion.article
@@ -56,7 +69,7 @@ const ProjectCard = ({
 
       <div className="relative" ref={textRef}>
         <div className="relative z-30 pt-2">
-          <div className="flex items-center gap-4 text-sm font-medium text-primary-grey">
+          <div className="flex items-center gap-4 text-sm font-medium text-primary-white/80">
             <span>{project.role}</span>
             <span>•</span>
             <span>{project.year}</span>
@@ -67,27 +80,21 @@ const ProjectCard = ({
               <ProjectBadge status={project.status as ProjectStatus} />
             )}
           </div>
-          <p className="mb-8 text-lg text-primary-grey">{project.tagline}</p>
+          <p className="mb-8 text-lg text-primary-white/80">
+            {project.tagline}
+          </p>
 
           <div className="mb-8 space-y-6 text-primary-grey">
-            <div>
-              <h4 className="mb-2 font-semibold text-primary-black dark:text-primary-white">
-                The Challenge
-              </h4>
-              <p>{project.challenge}</p>
-            </div>
-            <div>
-              <h4 className="mb-2 font-semibold text-primary-black dark:text-primary-white">
-                My Solution
-              </h4>
-              <p>{project.solution}</p>
-            </div>
+            {projectText.map((item, index) => (
+              <div key={index}>
+                <h4 className={`${titleClasses} mb-2`}>{item.title}</h4>
+                <p className="text-primary-white">{item.desc}</p>
+              </div>
+            ))}
           </div>
 
           <div className="mb-8">
-            <h4 className="mb-4 font-semibold text-primary-black dark:text-primary-white">
-              Key Features
-            </h4>
+            <h4 className={`${titleClasses} mb-4`}>Key Features</h4>
             <ul className="space-y-3">
               {project.features.map((feature: string) => (
                 <li key={feature} className="flex items-start gap-3">
@@ -102,9 +109,7 @@ const ProjectCard = ({
           </div>
 
           <div className="mb-8">
-            <h4 className="mb-4 font-semibold text-primary-black dark:text-primary-white">
-              Technologies
-            </h4>
+            <h4 className={`${titleClasses} mb-4`}>Technologies</h4>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag: string) => (
                 <span key={tag} className="tags">
@@ -114,7 +119,7 @@ const ProjectCard = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-4 border-t border-zinc-200 pt-6 dark:border-zinc-800">
+          <div className="flex items-center gap-4 border-t border-zinc-800 pt-6">
             {project.github && (
               <a
                 href={project.github}

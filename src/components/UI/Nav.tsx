@@ -45,7 +45,7 @@ export default function Nav() {
 
   return (
     <nav>
-      <ul className="fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-6 rounded-full border border-neutral-950/10 bg-white/80 bg-opacity-50 px-6 text-sm shadow-lg backdrop-blur-sm backdrop-filter dark:border-neutral-100/10 dark:bg-neutral-950/80">
+      <ul className="fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-6 rounded-full border border-neutral-100/10 bg-neutral-950/80 bg-opacity-50 px-6 text-sm shadow-lg backdrop-blur-sm backdrop-filter">
         {linksNav.map((link) => (
           <li
             key={link.href}

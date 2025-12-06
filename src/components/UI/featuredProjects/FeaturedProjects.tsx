@@ -37,9 +37,7 @@ const FeaturedProjects = () => {
                 <ProjectBadge status={project.status as ProjectStatus} />
               </div>
 
-              <p className="mb-6 text-lg text-zinc-600 dark:text-zinc-400">
-                {project.tagline}
-              </p>
+              <p className="mb-6 text-lg text-zinc-400">{project.tagline}</p>
 
               <div className="mb-6 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
@@ -49,7 +47,7 @@ const FeaturedProjects = () => {
                 ))}
               </div>
 
-              <div className="prose prose-zinc dark:prose-invert max-w-none">
+              <div className="prose prose-invert max-w-none">
                 <h4 className="text-lg font-semibold text-secondary-yellow">
                   The Challenge
                 </h4>

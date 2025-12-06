@@ -51,7 +51,7 @@ const ContactCard = ({
       target="_blank"
       rel="noopener noreferrer"
       variants={itemVariants}
-      className={`group relative flex flex-col items-start justify-between overflow-hidden rounded-xl border border-zinc-200 p-6 text-left transition-shadow duration-300 ease-in-out hover:shadow-2xl dark:border-zinc-800 ${gridClass}`}
+      className={`group relative flex flex-col items-start justify-between overflow-hidden rounded-xl border border-zinc-800 p-6 text-left transition-shadow duration-300 ease-in-out hover:shadow-2xl ${gridClass}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -61,16 +61,12 @@ const ContactCard = ({
         style={{ x: springX, y: springY }}
         className="relative z-10 flex h-full flex-col"
       >
-        <div className="mb-4 text-primary-black transition-transform duration-300 ease-out group-hover:scale-110 dark:text-primary-white">
+        <div className="mb-4 text-primary-white transition-transform duration-300 ease-out group-hover:scale-110">
           <Icon className="size-8" />
         </div>
         <div className="flex-grow">
-          <h3 className="mb-1 text-xl font-bold text-primary-black dark:text-primary-white">
-            {title}
-          </h3>
-          <p className="text-sm text-primary-grey dark:text-primary-lightgrey">
-            {description}
-          </p>
+          <h3 className="mb-1 text-xl font-bold text-primary-white">{title}</h3>
+          <p className="text-sm text-primary-lightgrey">{description}</p>
         </div>
       </motion.div>
 

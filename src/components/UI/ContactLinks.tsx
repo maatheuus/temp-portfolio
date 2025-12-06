@@ -52,13 +52,13 @@ function BlockLink({ icon: Icon, text, href }: LinkData) {
     <Link
       href={href}
       target="_blank"
-      className="group flex items-center gap-2 rounded-full border border-primary-grey px-4 py-2 transition-colors duration-300 hover:border-secondary-yellow hover:bg-primary-grey/5 dark:border-primary-grey dark:hover:border-secondary-yellow dark:hover:bg-primary-white/5"
+      className="group flex items-center gap-2 rounded-full border border-primary-grey px-4 py-2 transition-colors duration-300 hover:border-secondary-yellow hover:bg-primary-grey/5"
     >
       <Icon
         size={20}
-        className="text-primary-grey transition-colors duration-300 group-hover:text-secondary-yellow dark:text-primary-lightgrey dark:group-hover:text-secondary-yellow"
+        className="text-primary-grey transition-colors duration-300 group-hover:text-secondary-yellow"
       />
-      <span className="text-sm font-medium text-primary-grey transition-colors duration-300 group-hover:text-secondary-yellow dark:text-primary-lightgrey dark:group-hover:text-secondary-yellow">
+      <span className="text-sm font-medium text-primary-grey transition-colors duration-300 group-hover:text-secondary-yellow">
         {text}
       </span>
     </Link>

@@ -73,7 +73,7 @@ const Skills = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="group flex flex-col rounded-lg border border-zinc-200 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg md:p-6 lg:col-span-2 lg:px-6 lg:py-2 dark:border-zinc-800 dark:bg-zinc-900/50"
+          className="group flex flex-col rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg md:p-6 lg:col-span-2 lg:px-6 lg:py-2"
         >
           {skillsData.map((category, index) => (
             <motion.div
@@ -90,7 +90,7 @@ const Skills = ({
             >
               <div className="mb-5 flex items-center gap-4">
                 <category.icon className="size-5 text-yellow-500 md:size-6" />
-                <h3 className="text-lg font-semibold text-zinc-800 md:text-xl dark:text-zinc-100">
+                <h3 className="text-lg font-semibold text-zinc-100 md:text-xl">
                   {category.category}
                 </h3>
               </div>

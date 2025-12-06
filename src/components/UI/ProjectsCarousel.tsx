@@ -102,7 +102,7 @@ const ProjectsCarousel = ({
         />
         <div
           onClick={handleImageClick}
-          className="absolute inset-0 z-[2] flex cursor-pointer items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="absolute inset-0 z-[2] flex cursor-pointer items-center justify-center bg-primary-black/40 opacity-100 transition-opacity duration-300 group-hover:opacity-100 md:opacity-0"
         >
           <MagnifyingGlassPlusIcon
             size={32}
@@ -113,7 +113,7 @@ const ProjectsCarousel = ({
         {!isSingleImage && (
           <>
             <div
-              className="group/arrow absolute right-4 top-1/2 z-10 block -translate-y-1/2 cursor-pointer select-none rounded-full bg-yellow-400/40 p-2 text-white opacity-0 transition-all duration-300 hover:bg-yellow-400/80 group-hover:opacity-100"
+              className="group/arrow absolute right-4 top-1/2 z-10 block -translate-y-1/2 cursor-pointer select-none rounded-full bg-yellow-400/40 p-2 text-white opacity-100 transition-all duration-300 hover:bg-yellow-400/80 group-hover:opacity-100 md:opacity-0"
               onClick={() => paginate(1)}
             >
               <ArrowRightIcon
@@ -123,7 +123,7 @@ const ProjectsCarousel = ({
             </div>
 
             <div
-              className="group/arrow absolute left-4 top-1/2 z-10 block -translate-y-1/2 cursor-pointer select-none rounded-full bg-yellow-400/40 p-2 text-white opacity-0 transition-all duration-300 hover:bg-yellow-400/80 group-hover:opacity-100"
+              className="group/arrow absolute left-4 top-1/2 z-10 block -translate-y-1/2 cursor-pointer select-none rounded-full bg-yellow-400/40 p-2 text-white opacity-100 transition-all duration-300 hover:bg-yellow-400/80 group-hover:opacity-100 md:opacity-0"
               onClick={() => paginate(-1)}
             >
               <ArrowLeftIcon

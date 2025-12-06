@@ -21,7 +21,7 @@ const Page = () => {
   );
 
   return (
-    <main className="min-h-screen bg-primary-white text-primary-black dark:bg-primary-black dark:text-primary-white">
+    <main className="min-h-screen bg-primary-black text-primary-white">
       <section className="py-24 sm:py-32">
         <div className="container mx-auto max-w-5xl px-4 text-center">
           <HeadingTopText
