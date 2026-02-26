@@ -46,10 +46,3 @@ Beautiful timeline component displaying work experience and career progression.
 ## 📄 License
 
 This project is open source and available under the MIT License.
-
-## 👤 Author
-
-**Matheus MB** (Maat)
-
-- Website: [matheusmb.vercel.app](https://matheusmb.vercel.app)
-- GitHub: [@maatheuus](https://github.com/maatheuus)
