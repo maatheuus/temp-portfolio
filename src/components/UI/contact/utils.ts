@@ -23,7 +23,7 @@ export const contactLinks = [
   {
     title: 'Email',
     description: 'Send me a message',
-    href: 'mailto:matts14smkd@gmail.com',
+    href: 'mailto:maat.mbx@gmail.com',
     icon: MailboxIcon,
     gridClass: 'md:col-span-2',
   },
