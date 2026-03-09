@@ -2,10 +2,12 @@
 
 import FeaturedProjectsCarousel from '@/src/components/UI/ProjectsCarousel';
 import {
+  ArrowRightIcon,
   ArrowUpRightIcon,
   CheckCircleIcon,
   GithubLogoIcon,
 } from '@phosphor-icons/react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import {
@@ -119,7 +121,13 @@ const ProjectCard = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-4 border-t border-zinc-800 pt-6">
+          <div className="flex flex-wrap items-center gap-4 border-t border-zinc-800 pt-6">
+            <Link
+              href={`/projects/${project.slug}`}
+              className="flex items-center gap-2 font-medium transition-colors hover:text-secondary-yellow"
+            >
+              <ArrowRightIcon size={16} /> Ver mais detalhes
+            </Link>
             {project.github && (
               <a
                 href={project.github}
