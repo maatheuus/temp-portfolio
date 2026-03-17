@@ -13,6 +13,7 @@ import {
 
 export const allProjects = [
   {
+    slug: 'vegcom',
     category: 'Full-Stack',
     status: 'in-progress',
     title: 'Vegcom • Vegan & Vegetarian Recipes Platform',
@@ -42,6 +43,7 @@ export const allProjects = [
     ],
   },
   {
+    slug: 'movie-life',
     category: 'Full-Stack',
     status: 'outdated',
     title: 'Movie Life • Explore & Favorite Movies & Series',
@@ -66,6 +68,7 @@ export const allProjects = [
     live: 'https://movie-life-ml.vercel.app',
   },
   {
+    slug: 'book-life',
     category: 'Full-Stack',
     status: 'outdated',
     title: 'Book Life • Discover & Bookmark Your Favorite Reads',
@@ -97,6 +100,7 @@ export const allProjects = [
     live: 'https://book-life.vercel.app/',
   },
   {
+    slug: 'hotel-trillo',
     category: 'Front-End',
     status: 'outdated',
     title: 'Hotel Trillo • Hotel Search Platform in Brazil',
