@@ -13,11 +13,11 @@ export const projects = [
     title: 'Vegcom',
     status: 'in-progress',
     tagline:
-      'The vegan and vegetarian recipe platform that combines community, learning, and fun.',
+      'A recipe and community platform built specifically for vegans and vegetarians.',
     challenge:
-      'The challenge was to create a unique space for vegans, vegetarians, and those curious about exploring plant-based cuisine. We needed to combine practicality, a consistent visual identity, intelligent recipe search, personalized profiles, and also pave the way for a premium model.',
+      "Most recipe sites treat plant-based cooking as a niche. I wanted to build something that felt purpose-built for it — with real search and filter tools, personal profiles, and a community feed that wasn't tacked on.",
     solution:
-      'I built Vegcom with Next.js and Tailwind, using reusable components and smooth animations to offer a modern and welcoming experience. We implemented a recipe system with advanced search, filters, favorites, profile pages with sections like "Masterchef in Action" and "Favorites of the Heart," as well as a chat styled in the brands tone. Everything was designed to grow scalably, with room for premium features in the future.',
+      "Next.js 15 frontend, NestJS backend, Prisma + PostgreSQL. The recipe system has advanced filters, favorites, and rich text creation. Profiles have personality. There's a Gemini-powered AI chat and Stripe wired in for a future premium tier.",
     images: [vegcomImg1, vegcomImg2, vegcomImg3, vegcomImg4],
     tags: ['Next.js', 'TypeScript', 'Nest.js', 'Prisma', 'PostgreSQL'],
   },

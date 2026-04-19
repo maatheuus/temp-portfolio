@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import {
   CodeIcon,
   DatabaseIcon,
+  DeviceMobileIcon,
   HardDrivesIcon,
   type Icon,
 } from '@phosphor-icons/react';
@@ -25,12 +26,24 @@ const skillsData: SkillCategory[] = [
     category: 'Frontend',
     icon: CodeIcon,
     skills: [
+      { name: 'Next.js' },
       { name: 'React' },
       { name: 'TypeScript' },
-      { name: 'Next.js' },
+      { name: 'TanStack Query' },
+      { name: 'React Hook Form' },
+      { name: 'Zod' },
       { name: 'Tailwind CSS' },
       { name: 'Framer Motion' },
-      { name: 'HTML5 & CSS3' },
+      { name: 'GSAP' },
+    ],
+  },
+  {
+    category: 'Mobile',
+    icon: DeviceMobileIcon,
+    skills: [
+      { name: 'React Native' },
+      { name: 'Expo' },
+      { name: 'EAS (Build & Update)' },
     ],
   },
   {

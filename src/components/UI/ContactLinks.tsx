@@ -20,7 +20,7 @@ const links: LinkData[] = [
     text: 'Connect with me',
   },
   {
-    href: 'mailto:matts14smkd@gmail.com',
+    href: 'mailto:maat.mbx@gmail.com',
     icon: AtIcon,
     text: 'Send me an email',
   },

@@ -7,8 +7,8 @@ import {
   CheckCircleIcon,
   GithubLogoIcon,
 } from '@phosphor-icons/react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { useRef } from 'react';
 import {
   ProjectBadge,
@@ -33,11 +33,11 @@ const ProjectCard = ({
   const projectText = [
     {
       title: 'The Challenge',
-      desc: project.challenge,
+      desc: project.shortChallenge,
     },
     {
       title: 'The Solution',
-      desc: project.solution,
+      desc: project.shortSolution,
     },
   ];
 

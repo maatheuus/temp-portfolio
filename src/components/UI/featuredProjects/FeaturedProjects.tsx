@@ -4,10 +4,12 @@ import Link from 'next/link';
 import HeadingTopText from '../../Layout/HeadingTopText';
 import Layout from '../../Layout/Layout';
 import ProjectsCarousel from '../ProjectsCarousel';
+import { allProjects } from '../projectsPage/mock';
 import { ProjectBadge, type ProjectStatus } from './ProjectBadge';
-import { projects } from './utils';
 
 const FeaturedProjects = () => {
+  const featuredProjects = allProjects.filter((p) => p.featured);
+
   return (
     <Layout>
       <div className="container mx-auto px-4">
@@ -18,7 +20,7 @@ const FeaturedProjects = () => {
         />
 
         <div className="space-y-20">
-          {projects.map((project) => (
+          {featuredProjects.map((project) => (
             <motion.article
               key={project.title}
               initial={{ opacity: 0, y: 50 }}
@@ -51,11 +53,11 @@ const FeaturedProjects = () => {
                 <h4 className="text-lg font-semibold text-secondary-yellow">
                   The Challenge
                 </h4>
-                <p className="text-base">{project.challenge}</p>
+                <p className="text-base">{project.shortChallenge}</p>
                 <h4 className="text-lg font-semibold text-secondary-yellow">
                   The Solution
                 </h4>
-                <p className="text-base">{project.solution}</p>
+                <p className="text-base">{project.shortSolution}</p>
               </div>
 
               <div className="relative mt-6 flex items-center gap-4">
