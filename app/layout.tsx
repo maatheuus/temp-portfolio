@@ -2,6 +2,7 @@ import Nav from '@/src/components/UI/Nav';
 import PageTransition from '@/src/components/UI/PageTransition';
 import { AnimatePresence } from 'framer-motion';
 import type { Metadata } from 'next';
+import { ViewTransitions } from 'next-view-transitions';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: 'Matheus MB',
-      url: 'https://matheusmb.vercel.app',
+      url: 'https://maatmbx.dev',
     },
   ],
   creator: 'Matheus MB',
@@ -97,15 +98,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-primary-black font-alice">
-        <AnimatePresence mode="wait">
-          <PageTransition>
-            <main className="px-4 pb-32 pt-16 sm:pt-32">{children}</main>
-          </PageTransition>
-        </AnimatePresence>
-        <Nav />
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en" suppressHydrationWarning>
+        <body className="bg-primary-black font-alice">
+          <AnimatePresence mode="wait">
+            <PageTransition>
+              <main className="px-4 pb-32 pt-16 sm:pt-32">{children}</main>
+            </PageTransition>
+          </AnimatePresence>
+          <Nav />
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
