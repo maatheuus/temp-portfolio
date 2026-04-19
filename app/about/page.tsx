@@ -55,10 +55,7 @@ export default function page() {
                 title="Play so much basketball"
                 images={basketImg}
               />
-              <GalleryLightbox
-                title="Make a trip (and I loved...2025 I coming)"
-                images={poaImg}
-              />
+              <GalleryLightbox title="Make a trip" images={poaImg} />
               <GalleryLightbox
                 title="I also take a lot of pictures"
                 mobileTitle="I also take good pictures"
