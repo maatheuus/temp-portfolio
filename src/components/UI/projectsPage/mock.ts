@@ -15,7 +15,7 @@ export const allProjects = [
   {
     slug: 'vegcom',
     category: 'Full-Stack',
-    status: 'in-progress',
+    status: 'completed',
     featured: true,
     title: 'Vegcom • Vegan & Vegetarian Recipes Platform',
     tagline:

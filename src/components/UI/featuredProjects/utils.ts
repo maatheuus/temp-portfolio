@@ -11,7 +11,7 @@ import {
 export const projects = [
   {
     title: 'Vegcom',
-    status: 'in-progress',
+    status: 'completed',
     tagline:
       'A recipe and community platform built specifically for vegans and vegetarians.',
     challenge:

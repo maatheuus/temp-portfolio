@@ -1,4 +1,4 @@
-import { InfoIcon, WrenchIcon } from '@phosphor-icons/react';
+import { CheckCircleIcon, InfoIcon, WrenchIcon } from '@phosphor-icons/react';
 
 const badgeConfig = {
   'in-progress': {
@@ -10,6 +10,11 @@ const badgeConfig = {
     text: 'Outdated',
     icon: <InfoIcon size={12} />,
     className: 'bg-amber-900/50 text-amber-300',
+  },
+  completed: {
+    text: 'Completed',
+    icon: <CheckCircleIcon size={12} />,
+    className: 'bg-green-900/50 text-green-300',
   },
 };
 
