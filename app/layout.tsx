@@ -1,5 +1,7 @@
+import Loader from '@/src/components/UI/Loader';
 import Nav from '@/src/components/UI/Nav';
 import PageTransition from '@/src/components/UI/PageTransition';
+import { Analytics } from '@vercel/analytics/next';
 import { AnimatePresence } from 'framer-motion';
 import type { Metadata } from 'next';
 import { ViewTransitions } from 'next-view-transitions';
@@ -101,12 +103,14 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en" suppressHydrationWarning>
         <body className="bg-primary-black font-alice">
+          <Loader />
           <AnimatePresence mode="wait">
             <PageTransition>
               <main className="px-4 pb-32 pt-16 sm:pt-32">{children}</main>
             </PageTransition>
           </AnimatePresence>
           <Nav />
+          <Analytics />
         </body>
       </html>
     </ViewTransitions>
