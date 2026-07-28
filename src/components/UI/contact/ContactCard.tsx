@@ -27,15 +27,17 @@ const ContactCard = ({
   const springX = useSpring(mouseX, springConfig);
   const springY = useSpring(mouseY, springConfig);
 
+  const MAX_TILT = 10;
+
   const handleMouseMove = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
     if (!ref.current) return;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
-    const x = e.clientX - left - width / 2;
-    const y = e.clientY - top - height / 2;
-    mouseX.set(x * 0.1);
-    mouseY.set(y * 0.1);
+    const x = ((e.clientX - left) / width - 0.5) * 2;
+    const y = ((e.clientY - top) / height - 0.5) * 2;
+    mouseX.set(x * MAX_TILT);
+    mouseY.set(y * MAX_TILT);
   };
 
   const handleMouseLeave = () => {

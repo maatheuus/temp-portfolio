@@ -1,9 +1,4 @@
-import {
-  GithubLogoIcon,
-  LinkedinLogoIcon,
-  MailboxIcon,
-  SpotifyLogoIcon,
-} from '@phosphor-icons/react';
+import { LinkedinLogoIcon, MailboxIcon } from '@phosphor-icons/react';
 
 export const contactLinks = [
   {
@@ -11,28 +6,14 @@ export const contactLinks = [
     description: 'My professional network',
     href: 'https://www.linkedin.com/in/matheusmaat/',
     icon: LinkedinLogoIcon,
-    gridClass: 'md:col-span-2',
-  },
-  {
-    title: 'GitHub',
-    description: 'See my code',
-    href: 'https://github.com/maatheuus',
-    icon: GithubLogoIcon,
-    gridClass: 'md:col-span-2',
+    gridClass: '',
   },
   {
     title: 'Email',
     description: 'Send me a message',
     href: 'mailto:maat.mbx@gmail.com',
     icon: MailboxIcon,
-    gridClass: 'md:col-span-2',
-  },
-  {
-    title: 'Spotify',
-    description: "What I'm listening to",
-    href: 'https://open.spotify.com/user/317aiq25sxkotkzfsdhhmbfscdhy?si=c104cf4b42fd44a1',
-    icon: SpotifyLogoIcon,
-    gridClass: 'md:col-span-2',
+    gridClass: '',
   },
 ];
 

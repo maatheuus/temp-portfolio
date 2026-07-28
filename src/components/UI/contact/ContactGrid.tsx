@@ -5,6 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import HeadingTopText from '../../Layout/HeadingTopText';
 import Layout from '../../Layout/Layout';
 import ContactCard from './ContactCard';
+import GithubCard from './GithubCard';
 import { contactLinks, containerVariants } from './utils';
 
 interface ContactGridProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -23,13 +24,12 @@ export const ContactGrid = ({
           <HeadingTopText
             title="Let's Connect"
             description="Now that you've reached the end, feel free to send me an email, find
-            me on LinkedIn, check out what I've been up to on GitHub, or see my
-            playlists on Spotify."
+            me on LinkedIn, or check out what I've been up to on GitHub."
           />
         )}
 
         <motion.div
-          className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-4"
+          className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
@@ -38,6 +38,7 @@ export const ContactGrid = ({
           {contactLinks.map((link) => (
             <ContactCard key={link.title} {...link} icon={link.icon} />
           ))}
+          <GithubCard />
         </motion.div>
       </div>
     </Layout>
