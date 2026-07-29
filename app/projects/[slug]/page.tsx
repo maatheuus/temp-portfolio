@@ -1,12 +1,13 @@
 'use client';
 
 import { use } from 'react';
-import { allProjects } from '@/src/components/UI/projectsPage/mock';
 import FeaturedProjectsCarousel from '@/src/components/UI/ProjectsCarousel';
 import {
   ProjectBadge,
   type ProjectStatus,
 } from '@/src/components/UI/featuredProjects/ProjectBadge';
+import { useLanguage } from '@/src/i18n/LanguageContext';
+import { useLocalizedProject } from '@/src/i18n/useLocalizedProjects';
 import {
   ArrowLeftIcon,
   ArrowUpRightIcon,
@@ -22,7 +23,8 @@ export default function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
-  const project = allProjects.find((p) => p.slug === slug);
+  const { t } = useLanguage();
+  const project = useLocalizedProject(slug);
 
   if (!project) {
     notFound();
@@ -30,11 +32,11 @@ export default function ProjectPage({
 
   const projectText = [
     {
-      title: 'The Challenge',
+      title: t.projectDetail.challenge,
       desc: project.challenge,
     },
     {
-      title: 'The Solution',
+      title: t.projectDetail.solution,
       desc: project.solution,
     },
   ];
@@ -47,7 +49,7 @@ export default function ProjectPage({
             href="/projects"
             className="mb-8 flex w-max items-center gap-2 font-medium text-primary-grey transition-colors hover:text-secondary-yellow"
           >
-            <ArrowLeftIcon size={20} /> Back to Projects
+            <ArrowLeftIcon size={20} /> {t.projectDetail.back}
           </Link>
 
           <div className="mb-8 flex items-center gap-4 text-sm font-medium text-primary-white/80">
@@ -95,7 +97,7 @@ export default function ProjectPage({
               {project.features?.length > 0 && (
                 <div>
                   <h2 className="mb-6 text-2xl font-bold text-primary-white">
-                    Key Features
+                    {t.projectDetail.keyFeatures}
                   </h2>
                   <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {project.features.map((feature: string) => (
@@ -118,7 +120,7 @@ export default function ProjectPage({
             <div className="space-y-12 lg:pl-8">
               <div>
                 <h2 className="mb-6 text-xl font-bold text-primary-white">
-                  Technologies
+                  {t.projectDetail.technologies}
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag: string) => (
@@ -132,7 +134,7 @@ export default function ProjectPage({
               {(project.github || project.live) && (
                 <div>
                   <h2 className="mb-6 text-xl font-bold text-primary-white">
-                    Links
+                    {t.projectDetail.links}
                   </h2>
                   <div className="flex flex-col gap-4">
                     {project.github && (
@@ -142,7 +144,7 @@ export default function ProjectPage({
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 font-medium text-primary-grey transition-colors hover:text-secondary-yellow"
                       >
-                        <GithubLogoIcon size={20} /> View Source Code
+                        <GithubLogoIcon size={20} /> {t.projectDetail.viewSource}
                       </a>
                     )}
                     {project.live && (
@@ -152,7 +154,7 @@ export default function ProjectPage({
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 font-medium text-primary-grey transition-colors hover:text-secondary-yellow"
                       >
-                        <ArrowUpRightIcon size={20} /> Visit Live Demo
+                        <ArrowUpRightIcon size={20} /> {t.projectDetail.visitLive}
                       </a>
                     )}
                   </div>

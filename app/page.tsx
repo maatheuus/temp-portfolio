@@ -7,48 +7,49 @@ import ContactLinks from '@/src/components/UI/ContactLinks';
 import FeaturedProjects from '@/src/components/UI/featuredProjects/FeaturedProjects';
 import Skills from '@/src/components/UI/Skills';
 import Tooltip from '@/src/helpers/Tooltip';
+import { useLanguage } from '@/src/i18n/LanguageContext';
 import useScrollPage from '@/src/util/scrollPage';
 
 export default function Page() {
   useScrollPage();
+  const { t } = useLanguage();
 
   return (
     <Layout>
       <ContactLinks />
       <div>
         <Heading as="h1" className="mb-8 text-3xl md:text-5xl lg:text-7xl">
-          Hello, I&apos;m Matheus, a Frontend Engineer based in Brazil, always
-          seeking new challenges.
+          {t.home.heading}
         </Heading>{' '}
         <Text className="max-w-2xl text-base md:text-lg">
-          I&apos;m currently working for a company as a front-end developer.
+          {t.home.subtext}
         </Text>
         <div className="inline-flex flex-wrap gap-x-1">
-          <Text>But besides that:</Text>
+          <Text>{t.home.besides}</Text>
           <Text className="flex items-center gap-1">
-            I&apos;m a{' '}
-            <Tooltip content="I'm actually a good nature photographer">
+            {t.home.photographer.prefix}{' '}
+            <Tooltip content={t.home.photographer.tooltip}>
               <span className="cursor-help font-semibold text-secondary-yellow underline">
-                photographer.
+                {t.home.photographer.label}
               </span>
             </Tooltip>
           </Text>
           <Text className="flex items-center gap-1">
-            I&apos;m also a good{' '}
-            <Tooltip content="I mean... I appreciate good music, but nobody needs to know">
+            {t.home.musician.prefix}{' '}
+            <Tooltip content={t.home.musician.tooltip}>
               <span className="cursor-help font-semibold text-secondary-yellow underline">
-                musician.
+                {t.home.musician.label}
               </span>
             </Tooltip>
           </Text>
           <Text className="flex items-center gap-1">
-            I&apos;m a good{' '}
-            <Tooltip content="I mean... I think you got the point">
+            {t.home.cook.prefix}{' '}
+            <Tooltip content={t.home.cook.tooltip}>
               <span className="cursor-help font-semibold text-secondary-yellow underline">
-                cook
+                {t.home.cook.label}
               </span>
             </Tooltip>{' '}
-            too.
+            {t.home.cook.suffix}
           </Text>
         </div>
       </div>

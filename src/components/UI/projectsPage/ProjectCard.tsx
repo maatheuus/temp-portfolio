@@ -10,6 +10,7 @@ import {
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRef } from 'react';
+import { useLanguage } from '@/src/i18n/LanguageContext';
 import {
   ProjectBadge,
   type ProjectStatus,
@@ -26,17 +27,18 @@ const ProjectCard = ({
   project: (typeof allProjects)[number];
   index: number;
 }) => {
+  const { t } = useLanguage();
   const imgRef = useRef<HTMLDivElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
   const overlayVisible = useOverlapDetector(imgRef, textRef, 14);
 
   const projectText = [
     {
-      title: 'The Challenge',
+      title: t.projectCard.challenge,
       desc: project.shortChallenge,
     },
     {
-      title: 'The Solution',
+      title: t.projectCard.solution,
       desc: project.shortSolution,
     },
   ];
@@ -96,7 +98,7 @@ const ProjectCard = ({
           </div>
 
           <div className="mb-8">
-            <h4 className={`${titleClasses} mb-4`}>Key Features</h4>
+            <h4 className={`${titleClasses} mb-4`}>{t.projectCard.keyFeatures}</h4>
             <ul className="space-y-3">
               {project.features.map((feature: string) => (
                 <li key={feature} className="flex items-start gap-3">
@@ -111,7 +113,7 @@ const ProjectCard = ({
           </div>
 
           <div className="mb-8">
-            <h4 className={`${titleClasses} mb-4`}>Technologies</h4>
+            <h4 className={`${titleClasses} mb-4`}>{t.projectCard.technologies}</h4>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag: string) => (
                 <span key={tag} className="tags">
@@ -126,7 +128,7 @@ const ProjectCard = ({
               href={`/projects/${project.slug}`}
               className="flex items-center gap-2 font-medium transition-colors hover:text-secondary-yellow"
             >
-              <ArrowRightIcon size={16} /> Ver mais detalhes
+              <ArrowRightIcon size={16} /> {t.projectCard.seeMore}
             </Link>
             {project.github && (
               <a
@@ -135,7 +137,7 @@ const ProjectCard = ({
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 font-medium transition-colors hover:text-secondary-yellow"
               >
-                <GithubLogoIcon size={16} /> Code
+                <GithubLogoIcon size={16} /> {t.projectCard.code}
               </a>
             )}
             {project.live && (
@@ -145,7 +147,7 @@ const ProjectCard = ({
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 font-medium transition-colors hover:text-secondary-yellow"
               >
-                <ArrowUpRightIcon size={16} /> Live Demo
+                <ArrowUpRightIcon size={16} /> {t.projectCard.liveDemo}
               </a>
             )}
           </div>

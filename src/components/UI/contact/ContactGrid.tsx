@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 import HeadingTopText from '../../Layout/HeadingTopText';
 import Layout from '../../Layout/Layout';
+import { useLanguage } from '@/src/i18n/LanguageContext';
 import ContactCard from './ContactCard';
 import GithubCard from './GithubCard';
 import { contactLinks, containerVariants } from './utils';
@@ -17,14 +18,21 @@ export const ContactGrid = ({
   className,
   ...props
 }: ContactGridProps) => {
+  const { t } = useLanguage();
+
+  const links = contactLinks.map((link) => ({
+    ...link,
+    description:
+      link.title === 'LinkedIn' ? t.contactGrid.linkedinDesc : t.contactGrid.emailDesc,
+  }));
+
   return (
     <Layout className={twMerge('py-8 md:py-10 lg:py-16', className)} {...props}>
       <div className="container mx-auto max-w-4xl px-4 text-center">
         {!isContactPage && (
           <HeadingTopText
-            title="Let's Connect"
-            description="Now that you've reached the end, feel free to send me an email, find
-            me on LinkedIn, or check out what I've been up to on GitHub."
+            title={t.contactGrid.heading}
+            description={t.contactGrid.description}
           />
         )}
 
@@ -35,7 +43,7 @@ export const ContactGrid = ({
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {contactLinks.map((link) => (
+          {links.map((link) => (
             <ContactCard key={link.title} {...link} icon={link.icon} />
           ))}
           <GithubCard />

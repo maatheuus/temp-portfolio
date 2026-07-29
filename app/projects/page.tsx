@@ -2,22 +2,30 @@
 
 import HeadingTopText from '@/src/components/Layout/HeadingTopText';
 import ContactGrid from '@/src/components/UI/contact/ContactGrid';
-import { allProjects } from '@/src/components/UI/projectsPage/mock';
 import ProjectCard from '@/src/components/UI/projectsPage/ProjectCard';
 import ProjectFilters from '@/src/components/UI/projectsPage/ProjectFilters';
+import { useLanguage } from '@/src/i18n/LanguageContext';
+import { useLocalizedProjects } from '@/src/i18n/useLocalizedProjects';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
 
-const categories = ['All', 'Full-Stack', 'Front-End'];
 const Page = () => {
+  const { t } = useLanguage();
+  const allProjects = useLocalizedProjects();
   const [activeCategory, setActiveCategory] = useState('All');
+
+  const categories = [
+    { value: 'All', label: t.projectsPage.categoryAll },
+    { value: 'Full-Stack', label: 'Full-Stack' },
+    { value: 'Front-End', label: 'Front-End' },
+  ];
 
   const filteredProjects = useMemo(
     () =>
       activeCategory === 'All'
         ? allProjects
         : allProjects.filter((p) => p.category === activeCategory),
-    [activeCategory],
+    [activeCategory, allProjects],
   );
 
   return (
@@ -25,8 +33,8 @@ const Page = () => {
       <section className="py-24 sm:py-32">
         <div className="container mx-auto max-w-5xl px-4 text-center">
           <HeadingTopText
-            title=" Selected Works"
-            description="A selection of projects that demonstrate my passion for creating digital solutions, from design to deployment."
+            title={t.projectsPage.heading}
+            description={t.projectsPage.description}
           />
         </div>
       </section>

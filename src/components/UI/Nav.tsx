@@ -12,6 +12,7 @@ import { Link } from 'next-view-transitions';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { useLanguage } from '@/src/i18n/LanguageContext';
 
 type LinkProps = {
   href: string;
@@ -19,16 +20,17 @@ type LinkProps = {
   icon: React.ReactNode;
 };
 
-const linksNav: LinkProps[] = [
-  { href: '/', label: 'Home', icon: <HouseIcon size={28} /> },
-  { href: '/about', label: 'About', icon: <UserIcon size={28} /> },
-  { href: '/works', label: 'Works', icon: <SuitcaseIcon size={28} /> },
-  { href: '/projects', label: 'Projects', icon: <DesktopIcon size={28} /> },
-  { href: '/contact', label: 'Contact', icon: <AddressBookIcon size={28} /> },
-];
-
 export default function Nav() {
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const linksNav: LinkProps[] = [
+    { href: '/', label: t.nav.home, icon: <HouseIcon size={28} /> },
+    { href: '/about', label: t.nav.about, icon: <UserIcon size={28} /> },
+    { href: '/works', label: t.nav.works, icon: <SuitcaseIcon size={28} /> },
+    { href: '/projects', label: t.nav.projects, icon: <DesktopIcon size={28} /> },
+    { href: '/contact', label: t.nav.contact, icon: <AddressBookIcon size={28} /> },
+  ];
   const controlsSpan = useAnimation();
   const controlsText = useAnimation();
   const duration: number = 0.3;

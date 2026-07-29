@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 
 import {
@@ -10,13 +12,15 @@ import {
 import { twMerge } from 'tailwind-merge';
 import HeadingTopText from '../Layout/HeadingTopText';
 import Layout from '../Layout/Layout';
+import { useLanguage } from '@/src/i18n/LanguageContext';
+import type { translations } from '@/src/i18n/translations';
 
 type Skill = {
   name: string;
 };
 
 type SkillCategory = {
-  category: string;
+  category: keyof (typeof translations)['en']['skills']['categories'];
   icon: Icon;
   skills: Skill[];
 };
@@ -73,13 +77,12 @@ const Skills = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
+  const { t } = useLanguage();
+
   return (
     <Layout className={twMerge(' ', className)} {...props}>
       <div className="container mx-auto max-w-6xl px-4">
-        <HeadingTopText
-          title="My Skills"
-          description="Here are some of the tools and technologies I've worked with."
-        />
+        <HeadingTopText title={t.skills.heading} description={t.skills.description} />
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -104,7 +107,7 @@ const Skills = ({
               <div className="mb-5 flex items-center gap-4">
                 <category.icon className="size-5 text-yellow-500 md:size-6" />
                 <h3 className="text-lg font-semibold text-zinc-100 md:text-xl">
-                  {category.category}
+                  {t.skills.categories[category.category]}
                 </h3>
               </div>
               <div className="flex flex-wrap gap-2">
