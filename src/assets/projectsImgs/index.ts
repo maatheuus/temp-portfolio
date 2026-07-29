@@ -1,3 +1,17 @@
+// meeting transcriber
+import meetingTranscriberImg1 from './meeting-transcriber/img-1.png';
+import meetingTranscriberImg2 from './meeting-transcriber/img-2.png';
+import meetingTranscriberImg3 from './meeting-transcriber/img-3.png';
+import meetingTranscriberImg4 from './meeting-transcriber/img-4.png';
+import meetingTranscriberImg5 from './meeting-transcriber/img-5.png';
+export {
+  meetingTranscriberImg1,
+  meetingTranscriberImg2,
+  meetingTranscriberImg3,
+  meetingTranscriberImg4,
+  meetingTranscriberImg5,
+};
+
 // vegcom
 import vegcomImg1 from './vegcom/veg-1.png';
 import vegcomImg2 from './vegcom/veg-2.png';
