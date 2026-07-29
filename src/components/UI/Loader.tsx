@@ -2,16 +2,10 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '@/src/i18n/LanguageContext';
 
 const MIN_DURATION = 1500;
 const EASE = [0.22, 1, 0.36, 1] as const;
-
-const PHRASES = [
-  'Focusing the lens',
-  'Tuning the strings',
-  'Plating the code',
-  'Rendering pixels',
-];
 
 const stack = {
   initial: { opacity: 0, scale: 0.98 },
@@ -50,6 +44,7 @@ const logoLetter = {
 };
 
 export default function Loader() {
+  const { t } = useLanguage();
   const [loading, setLoading] = useState(true);
   const [phraseIndex, setPhraseIndex] = useState(0);
 
@@ -71,14 +66,14 @@ export default function Loader() {
     }
 
     const phraseTimer = setInterval(() => {
-      setPhraseIndex((i) => (i + 1) % PHRASES.length);
+      setPhraseIndex((i) => (i + 1) % t.loaderPhrases.length);
     }, 700);
 
     return () => {
       window.removeEventListener('load', finish);
       clearInterval(phraseTimer);
     };
-  }, []);
+  }, [t.loaderPhrases.length]);
 
   return (
     <AnimatePresence>
@@ -143,7 +138,7 @@ export default function Loader() {
                   transition={{ duration: 0.35, ease: EASE }}
                   className="flex items-center gap-1 text-sm tracking-wide text-primary-lightgrey"
                 >
-                  {PHRASES[phraseIndex]}
+                  {t.loaderPhrases[phraseIndex]}
                   <span className="flex gap-0.5">
                     {[0, 1, 2].map((d) => (
                       <motion.span

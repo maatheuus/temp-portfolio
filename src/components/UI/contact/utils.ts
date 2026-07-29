@@ -3,14 +3,12 @@ import { LinkedinLogoIcon, MailboxIcon } from '@phosphor-icons/react';
 export const contactLinks = [
   {
     title: 'LinkedIn',
-    description: 'My professional network',
     href: 'https://www.linkedin.com/in/matheusmaat/',
     icon: LinkedinLogoIcon,
     gridClass: '',
   },
   {
     title: 'Email',
-    description: 'Send me a message',
     href: 'mailto:maat.mbx@gmail.com',
     icon: MailboxIcon,
     gridClass: '',

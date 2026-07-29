@@ -1,11 +1,15 @@
+'use client';
+
 import {
   AtIcon,
   GithubLogoIcon,
   LinkedinLogoIcon,
+  TranslateIcon,
   type Icon,
 } from '@phosphor-icons/react';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
+import { useLanguage } from '@/src/i18n/LanguageContext';
 
 type LinkData = {
   href: string;
@@ -13,37 +17,60 @@ type LinkData = {
   text: string;
 };
 
-const links: LinkData[] = [
-  {
-    href: 'https://www.linkedin.com/in/matheusmaat/',
-    icon: LinkedinLogoIcon,
-    text: 'Connect with me',
-  },
-  {
-    href: 'mailto:maat.mbx@gmail.com',
-    icon: AtIcon,
-    text: 'Send me an email',
-  },
-  {
-    href: 'https://github.com/maatheuus',
-    icon: GithubLogoIcon,
-    text: 'Check out my GitHub',
-  },
-];
-
 export default function ContactLinks({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
+  const { t } = useLanguage();
+
+  const links: LinkData[] = [
+    {
+      href: 'https://www.linkedin.com/in/matheusmaat/',
+      icon: LinkedinLogoIcon,
+      text: t.contactLinks.linkedin,
+    },
+    {
+      href: 'mailto:maat.mbx@gmail.com',
+      icon: AtIcon,
+      text: t.contactLinks.email,
+    },
+    {
+      href: 'https://github.com/maatheuus',
+      icon: GithubLogoIcon,
+      text: t.contactLinks.github,
+    },
+  ];
+
   return (
     <div
-      className={twMerge('flex w-full flex-wrap items-center gap-3', className)}
+      className={twMerge(
+        'flex w-full flex-wrap items-center justify-between gap-3',
+        className,
+      )}
       {...props}
     >
-      {links.map((link, index) => (
-        <BlockLink key={index} {...link} />
-      ))}
+      <div className="flex flex-wrap items-center gap-3">
+        {links.map((link, index) => (
+          <BlockLink key={index} {...link} />
+        ))}
+      </div>
+      <LanguageToggle />
     </div>
+  );
+}
+
+function LanguageToggle() {
+  const { locale, t, toggleLocale } = useLanguage();
+
+  return (
+    <button
+      onClick={toggleLocale}
+      aria-label={t.languageToggle.ariaLabel}
+      className="group flex items-center gap-2 rounded-full border border-primary-grey px-4 py-2 text-secondary-yellow transition-colors duration-300 hover:border-secondary-yellow hover:bg-primary-grey/5"
+    >
+      <TranslateIcon size={20} />
+      <span className="text-sm font-medium uppercase">{locale}</span>
+    </button>
   );
 }
 

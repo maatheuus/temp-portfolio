@@ -1,17 +1,17 @@
+'use client';
+
 import HeadingTopText from '@/src/components/Layout/HeadingTopText';
 import Layout from '@/src/components/Layout/Layout';
 import ContactGrid from '@/src/components/UI/contact/ContactGrid';
+import { useLanguage } from '@/src/i18n/LanguageContext';
 
-export default function page() {
+export default function Page() {
+  const { t } = useLanguage();
+
   return (
     <Layout>
       <div className="pt-24 text-center sm:pt-32">
-        <HeadingTopText
-          title="Get in Touch"
-          description="I'm always open to discussing new projects, creative challenges, or
-          collaboration opportunities. Please feel free to reach out in
-          whichever way you prefer."
-        />
+        <HeadingTopText title={t.contact.title} description={t.contact.description} />
       </div>
 
       <ContactGrid isContactPage className="!pt-0" />

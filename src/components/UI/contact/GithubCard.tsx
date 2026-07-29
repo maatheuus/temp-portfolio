@@ -3,6 +3,7 @@
 import { ArrowUpRightIcon, GithubLogoIcon } from '@phosphor-icons/react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '@/src/i18n/LanguageContext';
 import { itemVariants } from './utils';
 
 const GITHUB_USERNAME = 'maatheuus';
@@ -14,6 +15,7 @@ interface Stats {
 }
 
 const GithubCard = () => {
+  const { t } = useLanguage();
   const ref = useRef<HTMLAnchorElement>(null);
   const [stats, setStats] = useState<Stats | null>(null);
   const [chartFailed, setChartFailed] = useState(false);
@@ -81,10 +83,11 @@ const GithubCard = () => {
           <h3 className="mb-1 text-xl font-bold text-primary-white">
             GitHub
           </h3>
-          <p className="text-sm text-primary-lightgrey">See my code</p>
+          <p className="text-sm text-primary-lightgrey">{t.contactGrid.githubSeeCode}</p>
           {stats && (
             <p className="mt-3 text-sm text-primary-lightgrey">
-              {stats.repos} repos · {stats.followers} followers
+              {stats.repos} {t.contactGrid.githubStatsSeparator} · {stats.followers}{' '}
+              {t.contactGrid.githubFollowers}
             </p>
           )}
         </div>

@@ -1,22 +1,25 @@
+'use client';
+
 import { ArrowUpRightIcon, GithubLogoIcon } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import HeadingTopText from '../../Layout/HeadingTopText';
 import Layout from '../../Layout/Layout';
+import { useLanguage } from '@/src/i18n/LanguageContext';
+import { useLocalizedProjects } from '@/src/i18n/useLocalizedProjects';
 import ProjectsCarousel from '../ProjectsCarousel';
-import { allProjects } from '../projectsPage/mock';
 import { ProjectBadge, type ProjectStatus } from './ProjectBadge';
 
 const FeaturedProjects = () => {
-  const featuredProjects = allProjects.filter((p) => p.featured);
+  const { t } = useLanguage();
+  const featuredProjects = useLocalizedProjects().filter((p) => p.featured);
 
   return (
     <Layout>
       <div className="container mx-auto px-4">
         <HeadingTopText
-          title="Featured Projects"
-          description="A selection of my recent work showcasing my expertise in full-stack
-            development and modern technologies."
+          title={t.featuredProjects.heading}
+          description={t.featuredProjects.description}
         />
 
         <div className="space-y-20">
@@ -51,11 +54,11 @@ const FeaturedProjects = () => {
 
               <div className="prose prose-invert max-w-none">
                 <h4 className="text-lg font-semibold text-secondary-yellow">
-                  The Challenge
+                  {t.featuredProjects.challenge}
                 </h4>
                 <p className="text-base">{project.shortChallenge}</p>
                 <h4 className="text-lg font-semibold text-secondary-yellow">
-                  The Solution
+                  {t.featuredProjects.solution}
                 </h4>
                 <p className="text-base">{project.shortSolution}</p>
               </div>
@@ -69,7 +72,7 @@ const FeaturedProjects = () => {
                     className="flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-secondary-yellow"
                   >
                     <GithubLogoIcon className="h-4 w-4" />
-                    Code
+                    {t.featuredProjects.code}
                   </Link>
                 )}
                 {project.live && (
@@ -80,7 +83,7 @@ const FeaturedProjects = () => {
                     className="flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-secondary-yellow"
                   >
                     <ArrowUpRightIcon className="h-4 w-4" />
-                    Live Demo
+                    {t.featuredProjects.liveDemo}
                   </Link>
                 )}
               </div>
@@ -97,7 +100,7 @@ const FeaturedProjects = () => {
         >
           <Link href="/projects">
             <div className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-yellow-500 px-6 py-3 text-sm font-medium text-black transition-all duration-300 hover:scale-105 hover:bg-yellow-400">
-              <span>View All Projects</span>
+              <span>{t.featuredProjects.viewAll}</span>
               <ArrowUpRightIcon className="h-4 w-4" />
             </div>
           </Link>

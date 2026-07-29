@@ -2,11 +2,14 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { useLanguage } from '@/src/i18n/LanguageContext';
+import { timelineTranslationsPt } from '@/src/i18n/timelineTranslations';
 import TimelineCard from './TimelineCard';
 import { timelineData } from './utils';
 
 export default function TimelineContent() {
   const timelineContentRef = useRef<HTMLDivElement>(null);
+  const { locale } = useLanguage();
 
   const { scrollYProgress } = useScroll({
     target: timelineContentRef,
@@ -14,6 +17,15 @@ export default function TimelineContent() {
   });
 
   const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+
+  const items =
+    locale === 'en'
+      ? timelineData
+      : timelineData.map((item, index) => ({
+          ...item,
+          title: timelineTranslationsPt[index].title ?? item.title,
+          description: timelineTranslationsPt[index].description,
+        }));
 
   return (
     <div className="relative mt-16">
@@ -24,7 +36,7 @@ export default function TimelineContent() {
       />
 
       <div ref={timelineContentRef} className="space-y-8 md:space-y-12">
-        {timelineData.map((item, index) => {
+        {items.map((item, index) => {
           const isLeft = index % 2 === 0;
           return (
             <motion.div

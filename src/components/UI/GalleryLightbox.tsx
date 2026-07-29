@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import Text from '../Layout/Text';
+import { useLanguage } from '@/src/i18n/LanguageContext';
 
 export interface ImageProps {
   src: StaticImageData;
@@ -34,6 +35,7 @@ export default function GalleryLightbox({
   mobileTitle,
   seeMore = true,
 }: GalleryLightboxProps) {
+  const { t } = useLanguage();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
@@ -62,7 +64,7 @@ export default function GalleryLightbox({
             href="/gallery"
             className="mt-1 hidden text-xs text-secondary-yellow no-underline md:inline-block"
           >
-            (see more...)
+            {t.galleryLightbox.seeMore}
           </Link>
         )}
       </div>

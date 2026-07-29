@@ -7,7 +7,7 @@ import { RowsPhotoAlbum } from 'react-photo-album';
 import 'react-photo-album/rows.css';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import ProjectFilters from './projectsPage/ProjectFilters';
+import ProjectFilters, { type CategoryOption } from './projectsPage/ProjectFilters';
 
 export interface ImageProps {
   src: StaticImageData;
@@ -22,7 +22,7 @@ export interface ImageProps {
 
 interface GalleryProps {
   images: ImageProps[];
-  categories?: string[];
+  categories?: CategoryOption[];
 }
 
 export default function Gallery({ images, categories }: GalleryProps) {
