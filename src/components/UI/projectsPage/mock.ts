@@ -1,6 +1,11 @@
 import {
   bookLifeImg,
   bookLifeImg2,
+  meetingTranscriberImg1,
+  meetingTranscriberImg2,
+  meetingTranscriberImg3,
+  meetingTranscriberImg4,
+  meetingTranscriberImg5,
   movieLifeImg1,
   movieLifeImg2,
   movieLifeImg3,
@@ -55,10 +60,57 @@ export const allProjects = [
     live: 'https://www.vegcom.life',
   },
   {
+    slug: 'meeting-transcriber',
+    category: 'Full-Stack',
+    status: 'completed',
+    featured: true,
+    title: 'Meeting Transcriber • Local-First Meeting Recorder & AI Notes',
+    tagline:
+      'A desktop app that records meetings, transcribes them with speaker labels, and turns the transcript into something you can act on.',
+    role: 'Full-Stack Developer',
+    year: '2026',
+
+    shortChallenge:
+      'Meeting transcription tools all want your audio on their servers. I wanted the opposite: recording, storage and search that never leave your machine, with the AI parts opt-in rather than mandatory.',
+    shortSolution:
+      'Electron 39 with React 19 and TypeScript. Deepgram handles transcription with diarization, Gemini handles summaries and chat, and everything else — meetings, segments, settings — lives in a local SQLite database with versioned migrations and full-text search.',
+
+    challenge:
+      "Every meeting transcription product I looked at is a web app that owns your data. Audio goes up, transcripts live in someone else's database, and search is whatever they decided to build. I wanted a desktop app where the recording, the database and the search index sit on your own disk, and the only thing that ever leaves the machine is the audio you explicitly send off to be transcribed.\n\nThat constraint made the hard parts obvious. Capturing system audio alongside the microphone means the other side of a call is transcribed too, which the browser cannot do. Storing transcripts locally means building real search instead of leaning on a hosted service. And keeping the summary useful across regenerations means action items cannot live inside the summary text, or ticking one off would be undone the next time the model runs.",
+    solution:
+      'The app is Electron 39 with electron-vite, React 19 and TypeScript, styled with Tailwind CSS 4 and shadcn/ui. The main process owns the database and every integration; the renderer talks to it through a typed preload bridge, one IPC module per domain.\n\nRecording mixes microphone input with system audio into a single track, with a floating overlay pill for elapsed time and pause, resume, stop and screen capture while the main window is out of the way. Transcription runs on Deepgram (nova-3) when the recording stops, with diarization, punctuation and smart formatting. The meeting language pins the acoustic model; without one, Deepgram detects it.\n\nTurns are stored as segments with stable IDs — the summary cites them, so they are never reassigned. Segments are editable inline, renaming a speaker rewrites every turn of that speaker, and clicking a transcript line seeks the audio player to that moment.\n\nThe AI layer runs on Gemini: summaries driven by reusable instruction templates, action items extracted as checkable tasks, a chat that answers questions against the transcript, auto-naming and auto-tagging, and non-destructive translation. Action items are stored in their own table precisely so regenerating a summary never resets what you already ticked off.\n\nPersistence is better-sqlite3 with numbered SQL migrations and SQLite FTS5 for search — full text across every transcript, not just titles. Folders, tags, pinning and a trash with undo sit on top of it, and a meeting exports to Markdown, plain text, SRT, VTT or JSON.',
+
+    features: [
+      'Microphone and system audio captured together, so both sides of a call are transcribed',
+      'Deepgram transcription with speaker diarization and inline editing',
+      'Gemini summaries, extracted action items, and chat against the transcript',
+      'Full-text search across every transcript, powered by SQLite FTS5',
+      'Folders, tags, pinning and a trash with undo instead of hard deletes',
+      'Export to Markdown, plain text, SRT, VTT or JSON',
+    ],
+    images: [
+      meetingTranscriberImg1,
+      meetingTranscriberImg2,
+      meetingTranscriberImg3,
+      meetingTranscriberImg4,
+      meetingTranscriberImg5,
+    ],
+    tags: [
+      'Electron',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'SQLite',
+      'Deepgram',
+      'Gemini',
+    ],
+    github: 'https://github.com/maatheuus/meeting-transcriber',
+  },
+  {
     slug: 'movie-life',
     category: 'Full-Stack',
     status: 'outdated',
-    featured: true,
+    featured: false,
     title: 'Movie Life • Explore & Favorite Movies & Series',
     tagline:
       'A full-stack platform for organizing your personal movie and series universe.',
