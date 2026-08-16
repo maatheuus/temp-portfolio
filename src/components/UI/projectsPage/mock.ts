@@ -64,29 +64,29 @@ export const allProjects = [
     category: 'Full-Stack',
     status: 'completed',
     featured: true,
-    title: 'Meeting Transcriber • Local-First Meeting Recorder & AI Notes',
+    title: 'Transcriber* • Local-First Meeting Recorder & AI Notes',
     tagline:
-      'A desktop app that records meetings, transcribes them with speaker labels, and turns the transcript into something you can act on.',
+      'Record the conversation. Keep the context. Turn it into work that survives the next meeting.',
     role: 'Full-Stack Developer',
     year: '2026',
 
     shortChallenge:
-      'Meeting transcription tools all want your audio on their servers. I wanted the opposite: recording, storage and search that never leave your machine, with the AI parts opt-in rather than mandatory.',
+      'Important decisions get buried in an hour of audio, then disappear before the next call. I wanted the useful record to stay searchable and under the user’s control.',
     shortSolution:
-      'Electron 39 with React 19 and TypeScript. Deepgram handles transcription with diarization, Gemini handles summaries and chat, and everything else — meetings, segments, settings — lives in a local SQLite database with versioned migrations and full-text search.',
+      'An Electron desktop app with React and TypeScript. It records microphone and system audio, keeps meetings in local SQLite, uses Deepgram for transcription, and Gemini for summaries, action items, and transcript Q&A.',
 
     challenge:
-      "Every meeting transcription product I looked at is a web app that owns your data. Audio goes up, transcripts live in someone else's database, and search is whatever they decided to build. I wanted a desktop app where the recording, the database and the search index sit on your own disk, and the only thing that ever leaves the machine is the audio you explicitly send off to be transcribed.\n\nThat constraint made the hard parts obvious. Capturing system audio alongside the microphone means the other side of a call is transcribed too, which the browser cannot do. Storing transcripts locally means building real search instead of leaning on a hosted service. And keeping the summary useful across regenerations means action items cannot live inside the summary text, or ticking one off would be undone the next time the model runs.",
+      'A meeting ends, the recording is saved somewhere, and the decisions inside it start to fade. Rewatching is slow. A generic summary is not enough when someone needs to find the exact discussion, recover a commitment, or turn it into a task.\n\nMost meeting-note products solve that problem by making the recording and its history part of someone else’s service. I wanted a desktop-first alternative: keep the audio files, meeting library, transcript, and search index on the user’s machine. When transcription or AI assistance is needed, the user brings their own provider keys.',
     solution:
-      'The app is Electron 39 with electron-vite, React 19 and TypeScript, styled with Tailwind CSS 4 and shadcn/ui. The main process owns the database and every integration; the renderer talks to it through a typed preload bridge, one IPC module per domain.\n\nRecording mixes microphone input with system audio into a single track, with a floating overlay pill for elapsed time and pause, resume, stop and screen capture while the main window is out of the way. Transcription runs on Deepgram (nova-3) when the recording stops, with diarization, punctuation and smart formatting. The meeting language pins the acoustic model; without one, Deepgram detects it.\n\nTurns are stored as segments with stable IDs — the summary cites them, so they are never reassigned. Segments are editable inline, renaming a speaker rewrites every turn of that speaker, and clicking a transcript line seeks the audio player to that moment.\n\nThe AI layer runs on Gemini: summaries driven by reusable instruction templates, action items extracted as checkable tasks, a chat that answers questions against the transcript, auto-naming and auto-tagging, and non-destructive translation. Action items are stored in their own table precisely so regenerating a summary never resets what you already ticked off.\n\nPersistence is better-sqlite3 with numbered SQL migrations and SQLite FTS5 for search — full text across every transcript, not just titles. Folders, tags, pinning and a trash with undo sit on top of it, and a meeting exports to Markdown, plain text, SRT, VTT or JSON.',
+      'Transcriber* is built with Electron 39, electron-vite, React 19, and TypeScript. The Electron main process owns storage and provider integrations; the UI reaches it through a typed preload bridge, keeping desktop capabilities out of the renderer.\n\nThe recorder combines microphone input with available system audio, preserving a continuous clock through pause and resume. A floating control keeps the recording accessible while the main window is out of the way. When the recording stops, Deepgram Nova-3 transcribes it with speaker labels, punctuation, and formatting. Each transcript segment is editable, speaker names can be corrected across the meeting, and a line can take the audio player straight back to that moment.\n\nGemini works from the transcript—not the audio—to generate a structured summary, extract checkable action items, answer questions about the meeting, suggest a title and tags, and translate without replacing the original text. Action items live separately from the summary, so regenerating it never clears work that has already been completed.\n\nThe local library is backed by better-sqlite3 and SQLite FTS5, making every transcript searchable alongside meeting titles. Folders, tags, pinning, a recoverable trash, and exports to Markdown, plain text, SRT, VTT, or JSON make the record useful after the call is over.',
 
     features: [
-      'Microphone and system audio captured together, so both sides of a call are transcribed',
-      'Deepgram transcription with speaker diarization and inline editing',
-      'Gemini summaries, extracted action items, and chat against the transcript',
-      'Full-text search across every transcript, powered by SQLite FTS5',
-      'Folders, tags, pinning and a trash with undo instead of hard deletes',
-      'Export to Markdown, plain text, SRT, VTT or JSON',
+      'Microphone and system audio recording, with pause, resume, and a floating recorder',
+      'Deepgram Nova-3 transcription with speaker labels, formatting, and inline corrections',
+      'Gemini summaries, checkable action items, transcript Q&A, naming, tagging, and translation',
+      'Editable transcript segments that seek the audio player to the matching moment',
+      'Full-text search across local transcripts with SQLite FTS5',
+      'Folders, tags, pinning, recoverable trash, and exports to Markdown, text, SRT, VTT, or JSON',
     ],
     images: [
       meetingTranscriberImg1,
@@ -96,15 +96,17 @@ export const allProjects = [
       meetingTranscriberImg5,
     ],
     tags: [
-      'Electron',
-      'React',
+      'Electron 39',
+      'electron-vite',
+      'React 19',
       'TypeScript',
-      'Tailwind CSS',
-      'SQLite',
-      'Deepgram',
+      'Tailwind CSS v4',
+      'better-sqlite3',
+      'SQLite FTS5',
+      'Deepgram Nova-3',
       'Gemini',
     ],
-    github: 'https://github.com/maatheuus/meeting-transcriber',
+    live: 'https://transcriberweblp.vercel.app/',
   },
   {
     slug: 'movie-life',
